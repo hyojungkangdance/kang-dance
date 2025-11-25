@@ -18,7 +18,7 @@
       background: #000;
     }
 
-    /* Fullscreen Hintergrundvideo */
+    /* Fullscreen-Hintergrundvideo */
     .video-bg {
       position: fixed;
       top: 0;
@@ -31,7 +31,7 @@
       filter: brightness(75%);
     }
 
-    /* Textblock unten im Bild */
+    /* Inhalt unten zentriert */
     .content {
       position: absolute;
       bottom: 10%;
@@ -46,7 +46,8 @@
     }
 
     /* Name EN + KR gleich groß */
-    h1 {
+    h1,
+    .korean-name {
       font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
       margin: 0;
@@ -54,8 +55,6 @@
     }
 
     .korean-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem; /* exakt gleiche Größe wie englischer Name */
       margin-top: 0.25rem;
     }
 
@@ -70,10 +69,7 @@
       .content {
         bottom: 8%;
       }
-      h1 {
-        font-size: 1.8rem;
-      }
-      .korean-name {
+      h1, .korean-name {
         font-size: 1.8rem;
       }
       .position {
@@ -85,16 +81,16 @@
 
 <body>
 
-  <!-- Hintergrundvideo -->
+  <!-- Hintergrundvideo mit korrektem Pfad! -->
   <video class="video-bg" autoplay muted loop playsinline>
-    <source src="background.mp4" type="video/mp4">
+    <source src="assets/videos/background.mp4" type="video/mp4">
   </video>
 
-  <!-- Vordergrundtext -->
+  <!-- Text -->
   <div class="content">
     <h1>Hyo-Jung Kang</h1>
     <p class="korean-name">강효정</p>
-    <p class="position">Balletttänzerin – Semperoper Dresden</p>
+    <p class="position">First Soloist – Semperoper Dresden</p>
   </div>
 
 </body>
