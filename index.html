@@ -18,7 +18,7 @@
       background: #000;
     }
 
-    /* Hintergrundvideo */
+    /* Fullscreen Hintergrundvideo */
     .video-bg {
       position: fixed;
       top: 0;
@@ -31,48 +31,50 @@
       filter: brightness(75%);
     }
 
-    /* Inhalt im unteren Drittel */
+    /* Textblock unten im Bild */
     .content {
       position: absolute;
-      bottom: 10%;       /* nach unten verschoben */
+      bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      color: #fff;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+      color: white;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
       width: 100%;
       padding: 0 1.5rem;
       box-sizing: border-box;
     }
 
+    /* Name EN + KR identische Größe */
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.9rem;   /* deutlich kleiner */
+      font-size: 2.2rem;
       margin: 0;
-      line-height: 1.15;
+      line-height: 1.10;
     }
 
     .korean-name {
-      font-size: 1.2rem;
-      margin-top: 0.3rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;        /* gleiche Größe wie H1 */
+      margin-top: 0.25rem;
     }
 
     .position {
       font-size: 1.1rem;
-      margin-top: 0.55rem;
+      margin-top: 0.7rem;
       opacity: 0.95;
     }
 
-    /* Mobile Optimierung */
+    /* Mobile-Optimierung */
     @media (max-width: 600px) {
       .content {
-        bottom: 8%; 
+        bottom: 8%;
       }
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
       .korean-name {
-        font-size: 1rem;
+        font-size: 1.8rem;
       }
       .position {
         font-size: 0.9rem;
@@ -97,4 +99,3 @@
 
 </body>
 </html>
-    
