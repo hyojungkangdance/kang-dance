@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kang.dance – Hyo-Jung Kang</title>
+  
+<!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
 
 <style>
     html, body {
@@ -26,20 +30,52 @@
         z-index: -1;
     }
 
-    /* Text im Vordergrund */
+     /* Text unten im Bild */
     .content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        text-align: center;
-        text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: white;
+      width: 100%;
+      padding: 0 1.5rem;
+      box-sizing: border-box;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
     }
 
-    h1 { font-size: 3rem; margin: 0; }
-    p { font-size: 1.4rem; margin: 0; }
-</style>
+    h1,
+    .korean-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .korean-name {
+      margin-top: 0.3rem;
+    }
+
+    .position {
+      font-size: 1.1rem;
+      margin-top: 0.7rem;
+      opacity: 0.95;
+    }
+
+    /* Mobile Optimierung */
+    @media (max-width: 600px) {
+      .content {
+        bottom: 8%;
+      }
+      h1,
+      .korean-name {
+        font-size: 1.8rem;
+      }
+      .position {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -49,11 +85,12 @@
     <source src="assets/videos/background.mp4" type="video/mp4">
 </video>
 
-<!-- Vordergrundtext -->
-<div class="content">
+  <!-- Textblock -->
+  <div class="content">
     <h1>Hyo-Jung Kang</h1>
-    <p>First Soloist – Ballet Artist</p>
-</div>
+    <p class="korean-name">강효정</p>
+    <p class="position">First Soloist – Semperoper Dresden</p>
+  </div>
 
 </body>
 </html>
