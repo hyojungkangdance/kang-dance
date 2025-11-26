@@ -1,141 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Media – Hyo-Jung Kang</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>media – Hyo-Jung Kang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts + Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="subpage media-page">
-    <div class="page-overlay"></div>
+<body class="page media-page">
 
-    <header class="site-header">
-        <div class="brand">
-            <a href="index.html">hyo-jung kang</a>
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="bio.html">bio</a></li>
-                <li><a href="media.html" class="active">media</a></li>
-                <li><a href="press.html">press</a></li>
-                <li><a href="contact.html">contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header mit gleichem Menü wie bio/contact -->
+  <header class="site-header">
+    <div class="logo">
+      <span>Hyo-Jung KANG</span>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">home</a>
+      <a href="bio.html">bio</a>
+      <a href="media.html" class="active">media</a>
+      <a href="press.html">press</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
 
-    <main class="content content-narrow">
-        <section class="section-intro">
-            <h1>Selected media</h1>
-            <p class="section-lead">
-                A curated selection of recordings featuring Hyo-Jung Kang in performance and class.
+  <!-- Inhalt -->
+  <main class="page-main">
+    <div class="page-inner">
+      <h1>media</h1>
+
+      <section class="media-section">
+        <p>
+          A selection of video recordings featuring Hyo-Jung Kang in performance and rehearsal.
+        </p>
+
+        <div class="media-videos">
+
+          <!-- Video 1 -->
+          <div class="video-embed">
+            <h2>Vienna State Ballet – <em>Sleeping Beauty</em> (rehearsal impressions)</h2>
+            <div class="video-inner">
+              <iframe
+                src="https://www.youtube.com/embed/UqJhrVKimPY"
+                title="Vienna State Ballet – Sleeping Beauty (rehearsal impressions)"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="video-caption">
+              Studio rehearsal at Vienna State Ballet.
             </p>
-        </section>
+          </div>
 
-        <section class="media-list">
-            <!-- Video 1 -->
-            <article class="media-item">
-                <h2 class="media-title">
-                    Vienna State Ballet – <em>Sleeping Beauty</em> (rehearsal impressions)
-                </h2>
-                <p class="media-meta">
-                    Wiener Staatsballett &middot; studio rehearsal
-                </p>
-                <div class="media-embed">
-                    <iframe
-                        src="https://www.youtube.com/embed/UqJhrVKimPY"
-                        title="Vienna State Ballet – Sleeping Beauty (rehearsal impressions)"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <p class="media-link">
-                    <a href="https://www.youtube.com/watch?v=UqJhrVKimPY" target="_blank" rel="noopener">
-                        Open on YouTube
-                    </a>
-                </p>
-            </article>
+          <!-- Video 2 -->
+          <div class="video-embed">
+            <h2><em>Le Jeune Homme et la Mort</em> – Kang &amp; Mansilla</h2>
+            <div class="video-inner">
+              <iframe
+                src="https://www.youtube.com/embed/amUy8vbZzt8"
+                title="Le Jeune Homme et la Mort – Kang &amp; Mansilla"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="video-caption">
+              Pas de deux performance.
+            </p>
+          </div>
 
-            <!-- Video 2 -->
-            <article class="media-item">
-                <h2 class="media-title">
-                    <em>Le Jeune Homme et la Mort</em> – Kang &amp; Mansilla
-                </h2>
-                <p class="media-meta">
-                    Pas de deux performance
-                </p>
-                <div class="media-embed">
-                    <iframe
-                        src="https://www.youtube.com/embed/amUy8vbZzt8"
-                        title="Le Jeune Homme et la Mort – Kang &amp; Mansilla"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <p class="media-link">
-                    <a href="https://www.youtube.com/watch?v=amUy8vbZzt8&t=819s" target="_blank" rel="noopener">
-                        Open on YouTube
-                    </a>
-                </p>
-            </article>
+          <!-- Video 3 -->
+          <div class="video-embed">
+            <h2>Vienna State Ballet – <em>Sleeping Beauty</em></h2>
+            <div class="video-inner">
+              <iframe
+                src="https://www.youtube.com/embed/1v2cnQFDSQI"
+                title="Vienna State Ballet – Sleeping Beauty"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="video-caption">
+              Stage performance at Vienna State Opera.
+            </p>
+          </div>
 
-            <!-- Video 3 -->
-            <article class="media-item">
-                <h2 class="media-title">
-                    Vienna State Ballet – <em>Sleeping Beauty</em>
-                </h2>
-                <p class="media-meta">
-                    Wiener Staatsballett &middot; stage performance
-                </p>
-                <div class="media-embed">
-                    <iframe
-                        src="https://www.youtube.com/embed/1v2cnQFDSQI"
-                        title="Vienna State Ballet – Sleeping Beauty"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <p class="media-link">
-                    <a href="https://www.youtube.com/watch?v=1v2cnQFDSQI" target="_blank" rel="noopener">
-                        Open on YouTube
-                    </a>
-                </p>
-            </article>
+          <!-- Video 4 -->
+          <div class="video-embed">
+            <h2>Seoul Metropolitan Ballet – Class With Me (feat. Hyo-Jung Kang, Heo Yong-soon)</h2>
+            <div class="video-inner">
+              <iframe
+                src="https://www.youtube.com/embed/UNQZoszXPJQ"
+                title="Seoul Metropolitan Ballet – Class With Me (feat. Hyo-Jung Kang, Heo Yong-soon)"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="video-caption">
+              Company class with Seoul Metropolitan Ballet.
+            </p>
+          </div>
 
-            <!-- Video 4 -->
-            <article class="media-item">
-                <h2 class="media-title">
-                    Seoul Metropolitan Ballet – Class With Me (feat. Hyo-Jung Kang, Heo Yong-soon)
-                </h2>
-                <p class="media-meta">
-                    Company morning class &middot; Seoul Metropolitan Ballet
-                </p>
-                <div class="media-embed">
-                    <iframe
-                        src="https://www.youtube.com/embed/UNQZoszXPJQ"
-                        title="Seoul Metropolitan Ballet – Class With Me (feat. Hyo-Jung Kang, Heo Yong-soon)"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <p class="media-link">
-                    <a href="https://www.youtube.com/watch?v=UNQZoszXPJQ" target="_blank" rel="noopener">
-                        Open on YouTube
-                    </a>
-                </p>
-            </article>
-        </section>
-    </main>
+        </div>
+      </section>
+    </div>
+  </main>
 
-    <footer class="site-footer">
-        <p>&copy; <!-- optional: current year --> Hyo-Jung Kang. All rights reserved.</p>
-    </footer>
 </body>
 </html>
