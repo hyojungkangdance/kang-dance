@@ -1,4 +1,4 @@
-/* Reset / Basis */
+/* Reset / Basis ---------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -7,7 +7,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -18,7 +19,18 @@ body {
   line-height: 1.5;
 }
 
-/* Startseite mit Video */
+/* Allgemeine Links ------------------------------------------------------- */
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* STARTSEITE MIT VIDEO --------------------------------------------------- */
+
 body.home {
   overflow: hidden;
 }
@@ -37,7 +49,7 @@ body.home {
   object-fit: cover;
 }
 
-/* leichte Abdunkelung */
+/* leichte Abdunkelung über dem Video */
 .overlay {
   position: fixed;
   inset: 0;
@@ -45,7 +57,8 @@ body.home {
   z-index: -1;
 }
 
-/* Header + Navigation (klein, elegant, ganz oben) */
+/* Header + Navigation (gilt für alle Seiten) ----------------------------- */
+
 .site-header {
   position: fixed;
   top: 0;
@@ -61,20 +74,18 @@ body.home {
 
 .logo span {
   font-family: 'Playfair Display', serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
   color: #f5f5f5;
   opacity: 0.85;
 }
 
+/* Menü in Kleinbuchstaben – Darstellung wie im HTML geschrieben */
 .main-nav a {
   margin-left: 0.9rem;
-  text-decoration: none;
   font-family: 'Playfair Display', serif;
-  font-size: 0.7rem;              /* klein und elegant */
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   color: #f0f0f0;
   opacity: 0.75;
   border-bottom: 1px solid transparent;
@@ -85,6 +96,7 @@ body.home {
 .main-nav a:hover {
   opacity: 1;
   border-color: #ffffff;
+  text-decoration: none;
 }
 
 .main-nav a.active {
@@ -92,7 +104,8 @@ body.home {
   border-color: #ffffff;
 }
 
-/* Hero-Bereich Startseite (Text im unteren Drittel) */
+/* Hero-Bereich Startseite – Text im unteren Drittel ---------------------- */
+
 .hero {
   height: 100vh;
   display: flex;
@@ -126,10 +139,47 @@ body.home {
   opacity: 0.9;
 }
 
-/* Unterseiten-Layout */
+
+/* UNTERSEITEN MIT HINTERGRUNDBILD --------------------------------------- */
+
 body.page {
-  background: #050505;
+  background-color: #000;
+  position: relative;
 }
+
+/* Dunkle Overlay-Schicht über den Hintergründen */
+body.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.60);
+  z-index: -1;
+}
+
+/* Spezifische Hintergründe je Seite */
+.bio-page {
+  background: #000 url("assets/images/bio_bg.jpg") center top no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.press-page {
+  background: #000 url("assets/images/press_bg.jpg") center top no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.contact-page {
+  background: #000 url("assets/images/contact_bg.jpg") center top no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* MEDIA-Seite: optional reiner dunkler Hintergrund (keine BG-Grafik) */
+/* body.page.media-page { background-color: #050505; } */
+
+
+/* Layout der Unterseiten ------------------------------------------------- */
 
 .page-main {
   min-height: 100vh;
@@ -141,7 +191,7 @@ body.page {
   margin: 0 auto;
 }
 
-/* Überschriften Unterseiten */
+/* Überschriften auf Unterseiten */
 .page-inner h1 {
   font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
@@ -165,7 +215,12 @@ body.page {
   margin-bottom: 1rem;
 }
 
-/* Bio-Listen */
+/* BIO-spezifisch --------------------------------------------------------- */
+
+.bio-section {
+  margin-bottom: 1.5rem;
+}
+
 .bio-list {
   list-style: none;
   font-size: 0.95rem;
@@ -175,7 +230,8 @@ body.page {
   margin-bottom: 0.4rem;
 }
 
-/* Media-Galerie */
+/* MEDIA-Seite: Fotos & Videos ------------------------------------------- */
+
 .media-section {
   margin-bottom: 2rem;
 }
@@ -193,7 +249,7 @@ body.page {
   border: 1px solid #333;
 }
 
-/* Video-Embeds */
+/* Videos */
 .media-videos {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -222,7 +278,8 @@ body.page {
   color: #cccccc;
 }
 
-/* Press-Liste */
+/* PRESS-Seite ------------------------------------------------------------ */
+
 .press-list {
   list-style: none;
   font-size: 0.95rem;
@@ -239,15 +296,16 @@ body.page {
 
 .press-list a {
   color: #ffffff;
-  text-decoration: none;
   border-bottom: 1px solid #555;
+  text-decoration: none;
 }
 
 .press-list a:hover {
   border-color: #ffffff;
 }
 
-/* Kontakt */
+/* CONTACT-Seite ---------------------------------------------------------- */
+
 .contact-list {
   list-style: none;
   margin-bottom: 1.5rem;
@@ -258,11 +316,9 @@ body.page {
   font-size: 0.95rem;
 }
 
-a {
-  color: #ffffff;
-}
 
-/* Responsiv */
+/* RESPONSIVE ANPASSUNGEN ------------------------------------------------- */
+
 @media (max-width: 700px) {
   .site-header {
     padding: 0.6rem 1.2rem;
@@ -270,7 +326,7 @@ a {
 
   .main-nav a {
     margin-left: 0.6rem;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
 
   .hero {
