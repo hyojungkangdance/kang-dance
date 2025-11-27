@@ -177,7 +177,11 @@ body.page::before {
 
 /* MEDIA-Seite: optional reiner dunkler Hintergrund (keine BG-Grafik) */
 /* body.page.media-page { background-color: #050505; } */
-
+.media-page {
+  background: #000 url("assets/images/media_bg.jpg") center top no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
 
 /* Layout der Unterseiten ------------------------------------------------- */
 
