@@ -325,15 +325,29 @@ body.page::before {
 
 @media (max-width: 700px) {
   .site-header {
-    padding: 0.6rem 1.2rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Logo links: kleiner und etwas weniger Letter-Spacing */
+  .logo span {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  /* Navigation rechts: etwas kleinere Schrift, enger zusammen */
+  .main-nav {
+    white-space: nowrap;       /* verhindert Zeilenumbruch */
   }
 
   .main-nav a {
-    margin-left: 0.6rem;
-    font-size: 0.7rem;
+    margin-left: 0.4rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
   }
 
+  /* Hero-Text etwas näher nach oben, damit es luftiger bleibt */
   .hero {
-    padding: 0 1.4rem 9vh;
+    padding: 0 1.2rem 8vh;
   }
 }
