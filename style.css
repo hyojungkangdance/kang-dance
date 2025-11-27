@@ -80,6 +80,25 @@ body.home {
   opacity: 0.85;
 }
 
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-en {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+}
+
+.logo-kr {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  margin-top: 0.1rem;
+}
+
 /* Menü in Kleinbuchstaben – Darstellung wie im HTML geschrieben */
 .main-nav a {
   margin-left: 0.9rem;
@@ -327,7 +346,15 @@ body.page::before {
   .site-header {
     padding: 0.4rem 0.8rem;
   }
+.logo-en {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+}
 
+.logo-kr {
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+}
   /* Logo links: kleiner und etwas weniger Letter-Spacing */
   .logo span {
     font-size: 0.65rem;
