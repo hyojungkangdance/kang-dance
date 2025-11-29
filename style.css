@@ -77,7 +77,7 @@ body.home {
   flex-direction: column;
   line-height: 1.1;
   position: relative;
-  top: 2px; /* Hyo-Jung KANG etwas nach unten */
+  top: 6px; /* gesamten Logo-Block klar nach unten schieben */
 }
 
 .logo span {
@@ -94,8 +94,6 @@ body.home {
   letter-spacing: 0.18em;
   color: #f5f5f5;
   opacity: 0.85;
-  position: relative;
-  top: 2px; /* Name minimal nach unten schieben */
 }
 
 .logo-kr {
