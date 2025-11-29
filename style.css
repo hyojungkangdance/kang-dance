@@ -85,6 +85,8 @@ body.home {
   letter-spacing: 0.18em;
   color: #f5f5f5;
   opacity: 0.85;
+  position: relative;
+  top: 2px; /* Name minimal nach unten schieben */
 }
 
 .logo-kr {
