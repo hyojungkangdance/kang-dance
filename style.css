@@ -19,14 +19,9 @@ body {
   line-height: 1.5;
 }
 
-/* Allgemeine Links ------------------------------------------------------- */
 a {
   color: #ffffff;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 /* STARTSEITE MIT VIDEO --------------------------------------------------- */
@@ -67,25 +62,17 @@ body.home {
   padding: 0.6rem 1.8rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   z-index: 10;
   background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0));
 }
 
+/* Logo: englischer Name + koreanischer Name untereinander */
 .logo {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   line-height: 1.1;
-  position: relative;
-  top: 8px; /* gesamten Logo-Block klar nach unten schieben */
-}
-
-.logo span {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
-  color: #f5f5f5;
-  opacity: 0.85;
 }
 
 .logo-en {
@@ -101,12 +88,12 @@ body.home {
   letter-spacing: 0.05em;
   color: #f5f5f5;
   opacity: 0.8;
-  margin-top: 0.15rem; /* optional, für saubere Distanz */
+  margin-top: 0.15rem;
 }
 
-/* Menü in Kleinbuchstaben – Darstellung wie im HTML geschrieben */
+/* Menü ------------------------------------------------------------- */
+
 .main-nav a {
-  line-height: 1.0;
   margin-left: 0.9rem;
   font-family: 'Playfair Display', serif;
   font-size: 0.75rem;
@@ -121,7 +108,6 @@ body.home {
 .main-nav a:hover {
   opacity: 1;
   border-color: #ffffff;
-  text-decoration: none;
 }
 
 .main-nav a.active {
@@ -141,47 +127,28 @@ body.home {
 }
 
 .hero-text h1 {
+  font-family: 'Playfair Display', serif;
   font-weight: 500;
+  font-size: 1.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.hero-text .korean-name {
+  font-size: 1.1rem;
   margin-bottom: 0.4rem;
 }
 
-.hero-text .name-en,
-.hero-text .name-ko {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  letter-spacing: 0.25em;
-}
-
-.hero-text .name-ko {
-  display: inline-block;
-  margin-top: 0.2rem;
-}
-
-.hero-text .role {
-  font-size: 0.85rem;
+.hero-text .position {
+  font-size: 0.8rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
+/* Hintergrund der Unterseiten -------------------------------------------- */
 
-/* UNTERSEITEN MIT HINTERGRUNDBILD --------------------------------------- */
-
-body.page {
-  background-color: #000;
-  position: relative;
-}
-
-/* Dunkle Overlay-Schicht über den Hintergründen */
-body.page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.60);
-  z-index: -1;
-}
-
-/* Spezifische Hintergründe je Seite */
 .bio-page {
   background: #000 url("assets/images/bio_bg.jpg") center top no-repeat;
   background-size: cover;
@@ -200,8 +167,6 @@ body.page::before {
   background-attachment: fixed;
 }
 
-/* MEDIA-Seite: optional reiner dunkler Hintergrund (keine BG-Grafik) */
-/* body.page.media-page { background-color: #050505; } */
 .media-page {
   background: #000 url("assets/images/media_bg.jpg") center top no-repeat;
   background-size: cover;
@@ -212,7 +177,7 @@ body.page::before {
 
 .page-main {
   min-height: 100vh;
-  padding: 5.5rem 1.5rem 3rem; /* Platz für fixen Header */
+  padding: 5.5rem 1.5rem 3rem;
 }
 
 .page-inner {
@@ -220,78 +185,117 @@ body.page::before {
   margin: 0 auto;
 }
 
-/* Überschriften auf Unterseiten */
 .page-inner h1 {
   font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 1.8rem;
+  text-transform: lowercase;
+  margin-bottom: 1.2rem;
 }
 
-.page-inner h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin: 1.5rem 0 0.8rem;
-}
-
-/* Fließtext */
 .page-inner p {
-  font-size: 0.95rem;
-  color: #e0e0e0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
+  max-width: 40rem;
 }
 
-/* BIO-spezifisch --------------------------------------------------------- */
+/* ------------------------------------------------------------------------
+   VARIANTE B: elegante animierte Unterstreichung für Links
+   Gilt für: bio, media, contact
+------------------------------------------------------------------------ */
 
-.bio-section {
-  margin-bottom: 1.5rem;
+.page-inner a:not(.press-link),
+.media-section a,
+.contact-list a {
+  color: #ffffff;
+  position: relative;
+  opacity: 0.85;
 }
 
-.bio-list {
+.page-inner a:not(.press-link)::after,
+.media-section a::after,
+.contact-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0%;
+  height: 1px;
+  background: #ffffff;
+  transition: width 0.25s ease;
+}
+
+.page-inner a:not(.press-link):hover::after,
+.media-section a:hover::after,
+.contact-list a:hover::after {
+  width: 100%;
+}
+
+/* ------------------------------------------------------------------------
+   VARIANTE C: klassische Unterstreichung für PRESS-Seite
+------------------------------------------------------------------------ */
+
+.press-list a {
+  color: #e8e8e8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.press-list a:hover {
+  color: #ffffff;
+}
+
+/* PRESS Meta */
+.press-list {
   list-style: none;
-  font-size: 0.95rem;
+  padding-left: 0;
+  margin-top: 1rem;
 }
 
-.bio-list li {
+.press-list li {
+  margin-bottom: 0.9rem;
+}
+
+.press-meta {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0.75;
+  margin-bottom: 0.1rem;
+}
+
+.press-source {
+  margin-right: 0.6rem;
+}
+
+.press-date {
+  opacity: 0.7;
+}
+
+/* MEDIA-Videos ----------------------------------------------------------- */
+
+.media-videos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.video-embed h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
   margin-bottom: 0.4rem;
 }
 
-/* MEDIA-Seite: Fotos & Videos ------------------------------------------- */
-
-.media-section {
-  margin-bottom: 2rem;
-}
-
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.75rem;
-}
-
-.media-grid img {
-  width: 100%;
-  display: block;
-  border-radius: 4px;
-  border: 1px solid #333;
-}
-
-/* Videos */
-.media-videos {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.5rem;
-}
-
-.video-embed {
-  max-width: 720px;
+.video-embed .video-caption {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-top: 0.4rem;
 }
 
 .video-inner {
   position: relative;
-  padding-top: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
 }
 
 .video-inner iframe {
@@ -299,41 +303,10 @@ body.page::before {
   inset: 0;
   width: 100%;
   height: 100%;
+  border: 0;
 }
 
-.video-caption {
-  font-size: 0.9rem;
-  margin-top: 0.4rem;
-  color: #cccccc;
-}
-
-/* PRESS-Seite ------------------------------------------------------------ */
-
-.press-list {
-  list-style: none;
-  font-size: 0.95rem;
-}
-
-.press-list li {
-  margin-bottom: 1.2rem;
-}
-
-.press-meta {
-  font-size: 0.85rem;
-  color: #bbbbbb;
-}
-
-.press-list a {
-  color: #ffffff;
-  border-bottom: 1px solid #555;
-  text-decoration: none;
-}
-
-.press-list a:hover {
-  border-color: #ffffff;
-}
-
-/* CONTACT-Seite ---------------------------------------------------------- */
+/* CONTACT --------------------------------------------------------------- */
 
 .contact-list {
   list-style: none;
@@ -342,35 +315,34 @@ body.page::before {
 
 .contact-list li {
   margin-bottom: 0.4rem;
-  font-size: 0.95rem;
 }
 
+.contact-note {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  max-width: 32rem;
+}
 
-/* RESPONSIVE ANPASSUNGEN ------------------------------------------------- */
+/* RESPONSIVE ------------------------------------------------------------ */
 
 @media (max-width: 700px) {
   .site-header {
-    padding: 0.4rem 0.8rem;
+    padding: 0.35rem 0.8rem;
   }
-.logo-en {
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-}
 
-.logo-kr {
-  font-size: 0.55rem;
-  letter-spacing: 0.05em;
-}
-  /* Logo links: kleiner und etwas weniger Letter-Spacing */
-  .logo span {
+  .logo-en {
     font-size: 0.65rem;
     letter-spacing: 0.14em;
     white-space: nowrap;
   }
 
-  /* Navigation rechts: etwas kleinere Schrift, enger zusammen */
+  .logo-kr {
+    font-size: 0.55rem;
+    letter-spacing: 0.05em;
+  }
+
   .main-nav {
-    white-space: nowrap;       /* verhindert Zeilenumbruch */
+    white-space: nowrap;
   }
 
   .main-nav a {
@@ -379,7 +351,6 @@ body.page::before {
     letter-spacing: 0.14em;
   }
 
-  /* Hero-Text etwas näher nach oben, damit es luftiger bleibt */
   .hero {
     padding: 0 1.2rem 8vh;
   }
