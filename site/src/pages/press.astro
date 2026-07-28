@@ -1,81 +1,436 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+
+const pressItems = [
+  {
+    source: "Sejong Center / Seoul Metropolitan Ballet",
+    date: "14–16 Aug 2026",
+    title:
+      "Double Bill Death and the Maiden – Hyo-Jung Kang in Christian Spuck’s Das siebte Blau",
+    href:
+      "https://www.sejongpac.or.kr/portal/performance/performance/performTicket.do?performIdx=36783&menuNo=200320",
+  },
+  {
+    source: "The Chosun Daily (조선일보)",
+    date: "28 Jul 2026",
+    title:
+      "올여름 서울, K발레 ★들이 쏟아진다 – International Korean ballet stars perform in Seoul",
+    href:
+      "https://www.chosun.com/culture-life/performance-arts/2026/07/28/YFSE6YNFXZEJTKDFUV4EN4XLC4/",
+  },
+  {
+    source: "Der Opernfreund",
+    date: "02 Jul 2026",
+    title:
+      "Dresden Ballet: Onegin – John Cranko at Semperoper Dresden",
+    href:
+      "https://deropernfreund.de/semperoper-dresden/dresden-ballett-onegin-john-cranko/",
+  },
+  {
+    source: "Sächsische Zeitung",
+    date: "01 Jul 2026",
+    title:
+      "Dresden: Ballet classic Onegin captivates the Semperoper audience",
+    href:
+      "https://www.saechsische.de/lokales/dresden/dresden-ballett-klassiker-onegin-begeistert-semperoper-publikum-SRNEUNZOORBSLNGY3RRMDVKJAM.html",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "27 Jun 2026",
+    title:
+      "Semperoper Ballett – Onegin by John Cranko",
+    href:
+      "https://ballett-journal.de/semperoper-ballett-onegin-john-cranko/",
+  },
+  {
+    source: "Semperoper Dresden",
+    date: "2026",
+    title:
+      "Press reviews for Onegin at Semperoper Ballett",
+    href:
+      "https://www.semperoper.de/spielplan/stuecke/62703-onegin/pressestimmen.html",
+  },
+  {
+    source: "Semperoper Dresden",
+    date: "2026",
+    title:
+      "Profound and emotionally moving – Hyo-Jung Kang and James Kirby Rogers on Onegin",
+    href:
+      "https://www.semperoper.de/spielplan/stuecke/62703-onegin/interview.html",
+  },
+  {
+    source: "The Korea Herald",
+    date: "27 Oct 2025",
+    title:
+      "Three generations of Korean ballet on one stage",
+    href:
+      "https://www.koreaherald.com/article/10602230",
+  },
+  {
+    source: "Korea JoongAng Daily",
+    date: "23 Oct 2025",
+    title:
+      "Seoul Metropolitan Ballet to bring curtain down in 2025 season with double bill",
+    href:
+      "https://koreajoongangdaily.joins.com/news/2025-10-23/entertainment/musicPerformance/Seoul-Metropolitan-Ballet-to-bring-curtain-down-in-2025-season-with-double-bill/2427117",
+  },
+  {
+    source: "Maeil Business Newspaper (MK)",
+    date: "Nov 2025",
+    title:
+      "A Tribute Ballet to a Composer Gone Too Soon – Hans van Manen × Young Soon Hue",
+    href:
+      "https://www.mk.co.kr/en/culture/11455860",
+  },
+  {
+    source: "Der Opernfreund",
+    date: "29 Jun 2025",
+    title:
+      "Vienna State Opera: Sleeping Beauty – Hyo-Jung Kang as Aurora",
+    href:
+      "https://deropernfreund.de/wiener-staatsoper/wien-dornroeschen-tschaikowsky-schlaepfer-petipa/",
+  },
+  {
+    source: "tanz.at",
+    date: "2025",
+    title:
+      "Kreationen – Vienna State Ballet",
+    href:
+      "https://www.tanz.at/kritiken/kritiken-2025/3055-wiener-staatsballett-kreationen",
+  },
+  {
+    source: "Die Presse",
+    date: "20 Nov 2024",
+    title:
+      "The Winter’s Tale as ballet – Shakespeare without words",
+    href:
+      "https://www.diepresse.com/19089775/the-winters-tale-als-ballett-ein-shakespeare-ganz-ohne-worte",
+  },
+  {
+    source: "Frankfurter Rundschau",
+    date: "2024",
+    title:
+      "The Winter’s Tale at Vienna State Ballet – A picture of jealousy",
+    href:
+      "https://www.fr.de/kultur/theater/the-winter-tale-beim-wiener-staatsballett-ein-bild-von-eifersucht-93425183.html",
+  },
+  {
+    source: "BÜHNE Magazin",
+    date: "2024",
+    title:
+      "The Winter’s Tale – Shakespeare on pointe shoes",
+    href:
+      "https://www.buehne-magazin.com/news/the-winters-tale-shakespeare-auf-spitzenschuhen",
+  },
+  {
+    source: "tanz.at",
+    date: "02 Jul 2024",
+    title:
+      "Nurejew-Gala beim Wiener Staatsballett",
+    href:
+      "https://www.tanz.at/kritiken/kritiken-2024/2923-nurejew-gala-beim-wiener-staatsballett",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "26 Jun 2024",
+    title:
+      "Gala der Virtuosität und der Vitalität – Nurejew-Gala des Wiener Staatsballetts",
+    href:
+      "https://ballett-journal.de/nurejew-gala-wiener-staatsballett-2024-live-stream/",
+  },
+  {
+    source: "tanz.at",
+    date: "2024",
+    title:
+      "Kreationen – Wiener Staatsballett",
+    href:
+      "https://www.tanz.at/kritiken/kritiken-2024/2903-kreationen",
+  },
+  {
+    source: "tanzschrift.at",
+    date: "04 Oct 2023",
+    title:
+      "Giselle – ballet with numerous debuts",
+    href:
+      "https://www.tanzschrift.at/buehne/kritisch-gesehen/1626-giselle-ballett-mit-zahlreichen-debuts",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "06 Nov 2023",
+    title:
+      "Grace incarnate – Star ballerina Hyo-Jung Kang",
+    href:
+      "https://ballett-journal.de/hyo-jung-kang-starballerina-wiener-staatsballett/",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "28 Apr 2023",
+    title:
+      "Like a sea of light – Goldberg Variations at Vienna State Ballet",
+    href:
+      "https://ballett-journal.de/wiener-staatsballett-goldberg-variationen-heinz-spoerli/",
+  },
+  {
+    source: "BÜHNE Magazin",
+    date: "14 Mar 2023",
+    title:
+      "Hyo-Jung Kang – First Soloist of the Vienna State Ballet",
+    href:
+      "https://www.buehne-magazin.com/a/hyo-jung-kang-erste-solotaenzerin-des-wiener-staatsballetts",
+  },
+  {
+    source: "Online Merker",
+    date: "25 Oct 2022",
+    title:
+      "Vienna State Opera: Sleeping Beauty – a fairy-tale without fairy-tale magic",
+    href:
+      "https://onlinemerker.com/wien-staatsoper-dornroeschen-ein-zaubermaerchen-ganz-ohne-maerchenzauber-premiere/",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "25 Oct 2022",
+    title:
+      "The Sleeping Beauty coup – Hyo-Jung Kang in the title role",
+    href:
+      "https://ballett-journal.de/dornroeschen-wiener-staatsballett-hyo-jung-kang/",
+  },
+  {
+    source: "tanz.at",
+    date: "2022",
+    title:
+      "In Seventh Heaven – Vienna State Ballet",
+    href:
+      "https://www.tanz.at/kritiken/kritiken-2022/2706-im-siebten-himmel",
+  },
+  {
+    source: "Online Merker",
+    date: "27 Jul 2021",
+    title:
+      "Stuttgart: NEW / WORKS – Farewell to Hyo-Jung Kang",
+    href:
+      "https://onlinemerker.com/stuttgart-neue-werke-new-works-stuttgarter-ballett-abschied-von-hyo-jung-kang/",
+  },
+  {
+    source: "Stuttgarter Zeitung",
+    date: "21 Jul 2021",
+    title:
+      "Ballerina Hyo-Jung Kang says farewell to Stuttgart Ballet",
+    href:
+      "https://www.stuttgarter-zeitung.de/gallery.stuttgarter-ballett-taenzerin-hyo-jung-kang-verabschiedet-sich.861cd589-483c-45b6-9957-d9a2d02ebb9b.html",
+  },
+  {
+    source: "The Korea Times",
+    date: "11 Jan 2013",
+    title:
+      "Kang Hyo-jung, future of Stuttgart Ballet",
+    href:
+      "https://www.koreatimes.co.kr/www/art/2013/01/690_128680.html",
+  },
+  {
+    source: "Semperoper Ballett Dresden",
+    date: "Official profile",
+    title:
+      "Hyo-Jung Kang – Principal Dancer at Semperoper Ballett Dresden",
+    href:
+      "https://www.semperoper.de/ensemble/personen/peid/hyo-jung-kang/7635.html",
+  },
+  {
+    source: "Vienna State Opera",
+    date: "Official profile",
+    title:
+      "Kang Hyo-Jung – Vienna State Ballet ensemble profile",
+    href:
+      "https://www.wiener-staatsoper.at/ensemble-gaeste/detail/artist/13666-kang-hyo-jung/",
+  },
+  {
+    source: "Stuttgart Ballet",
+    date: "Archived profile",
+    title:
+      "Hyo-Jung Kang – Principal Dancer",
+    href:
+      "https://www.stuttgart-ballet.de/company/hyo-jung-kang",
+  },
+  {
+    source: "Prix de Lausanne",
+    date: "Official profile",
+    title:
+      "Hyo-Jung Kang – Prix de Lausanne scholarship winner",
+    href:
+      "https://www.prixdelausanne.org/prize-winners/hyo-jung-kang/",
+  },
+] as const;
 ---
 
 <PageLayout
-  title="Press – Hyo-Jung Kang | Interviews and Reviews"
-  description="Selected press coverage, interviews and performance reviews featuring principal dancer Hyo-Jung Kang."
+  title="Press – Hyo-Jung Kang | Reviews, Interviews & Articles"
+  description="Press reviews, interviews, performance announcements and feature articles on principal dancer Hyo-Jung Kang from recognised media, ballet companies and opera houses in Europe and Korea."
   lang="en"
   activePage="press"
   pageClass="press-page"
 >
   <h1>press</h1>
 
-  <section class="press-section">
-    <p>
-      Selected interviews, portraits and performance reviews.
-    </p>
+  <p class="press-introduction">
+    Selected reviews, features, interviews and official performance
+    announcements from international newspapers, magazines, ballet
+    companies and opera houses.
+  </p>
 
+  <section
+    class="press-archive"
+    aria-label="Press coverage"
+  >
     <ul class="press-list">
-      <li>
-        <div class="press-meta">
-          <span class="press-source">ballett-journal.de</span>
-          <span class="press-date">27 Jun 2026</span>
-        </div>
+      {
+        pressItems.map((item) => (
+          <li class="press-item">
+            <div class="press-meta">
+              <span class="press-source">
+                {item.source}
+              </span>
 
-        <a
-          href="https://ballett-journal.de/semperoper-ballett-onegin-john-cranko/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Semperoper Ballett – Onegin by John Cranko
-        </a>
-      </li>
+              <span class="press-date">
+                {item.date}
+              </span>
+            </div>
 
-      <li>
-        <div class="press-meta">
-          <span class="press-source">Semperoper Dresden</span>
-          <span class="press-date">2026</span>
-        </div>
-
-        <a
-          href="https://www.semperoper.de/spielplan/stuecke/62703-onegin/interview.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hyo-Jung Kang and James Kirby Rogers on Onegin
-        </a>
-      </li>
-
-      <li>
-        <div class="press-meta">
-          <span class="press-source">The Korea Herald</span>
-          <span class="press-date">27 Oct 2025</span>
-        </div>
-
-        <a
-          href="https://www.koreaherald.com/article/10602230"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Three generations of Korean ballet on one stage
-        </a>
-      </li>
-
-      <li>
-        <div class="press-meta">
-          <span class="press-source">BÜHNE Magazin</span>
-          <span class="press-date">14 Mar 2023</span>
-        </div>
-
-        <a
-          href="https://www.buehne-magazin.com/a/hyo-jung-kang-erste-solotaenzerin-des-wiener-staatsballetts"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hyo-Jung Kang – First Soloist of the Vienna State Ballet
-        </a>
-      </li>
+            <a
+              class="press-link"
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </section>
 </PageLayout>
+
+<style>
+  .press-introduction {
+    max-width: 48rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .press-archive {
+    width: 100%;
+    max-width: 54rem;
+    padding-bottom: 4rem;
+  }
+
+  .press-list {
+    display: block;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .press-item {
+    margin: 0;
+    padding: 0 0 1.05rem;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.13);
+  }
+
+  .press-item + .press-item {
+    margin-top: 1.05rem;
+  }
+
+  .press-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+
+    margin: 0 0 0.3rem;
+    padding: 0;
+  }
+
+  .press-source {
+    font-family: "Inter", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    line-height: 1.35;
+
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .press-date {
+    font-family: "Inter", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 300;
+    line-height: 1.35;
+
+    color: rgba(255, 255, 255, 0.55);
+    white-space: nowrap;
+  }
+
+  .press-link {
+    display: inline;
+
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: #fff;
+
+    text-decoration-line: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+
+    transition:
+      color 0.2s ease,
+      text-decoration-color 0.2s ease;
+  }
+
+  .press-link:hover,
+  .press-link:focus-visible {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration-color: rgba(255, 255, 255, 0.9);
+  }
+
+  @media (max-width: 700px) {
+    .press-introduction {
+      margin-bottom: 1.4rem;
+    }
+
+    .press-archive {
+      padding-bottom: 3rem;
+    }
+
+    .press-item {
+      padding-bottom: 0.9rem;
+    }
+
+    .press-item + .press-item {
+      margin-top: 0.9rem;
+    }
+
+    .press-meta {
+      gap: 0.18rem 0.55rem;
+      margin-bottom: 0.24rem;
+    }
+
+    .press-source {
+      font-size: 0.76rem;
+    }
+
+    .press-date {
+      font-size: 0.68rem;
+    }
+
+    .press-link {
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+  }
+</style>
