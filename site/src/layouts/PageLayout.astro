@@ -1,0 +1,35 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+type Language = "en" | "de" | "ko";
+
+interface Props {
+  title: string;
+  description: string;
+  activePage: string;
+  pageClass: string;
+  lang?: Language;
+}
+
+const {
+  title,
+  description,
+  activePage,
+  pageClass,
+  lang = "en",
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  activePage={activePage}
+  bodyClass={`page ${pageClass}`}
+>
+  <main class="page-main">
+    <div class="page-inner">
+      <slot />
+    </div>
+  </main>
+</BaseLayout>
