@@ -1,0 +1,221 @@
+---
+interface Props {
+  roleLeft: string;
+  roleRight: string;
+}
+
+const {
+  roleLeft,
+  roleRight,
+} = Astro.props;
+---
+
+<div class="hk-home-background" aria-hidden="true">
+  <video
+    class="hk-home-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    <source
+      src="/assets/videos/background.mp4"
+      type="video/mp4"
+    />
+  </video>
+
+  <div class="hk-home-overlay"></div>
+</div>
+
+<main class="hk-home-hero">
+  <div class="hk-home-text">
+    <h1 class="hk-home-title">
+      <span class="hk-home-name-en">
+        Hyo-Jung KANG
+      </span>
+
+      <span class="hk-home-name-ko" lang="ko">
+        강효정
+      </span>
+    </h1>
+
+    <p class="hk-home-role">
+      <span>{roleLeft}</span>
+
+      <span
+        class="hk-home-role-separator"
+        aria-hidden="true"
+      >
+        |
+      </span>
+
+      <span>{roleRight}</span>
+    </p>
+  </div>
+</main>
+
+<style>
+  .hk-home-background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hk-home-video {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  .hk-home-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+      radial-gradient(
+        circle at top,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.55)
+      );
+  }
+
+  .hk-home-hero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    padding:
+      0
+      2rem
+      max(9vh, env(safe-area-inset-bottom));
+
+    color: #fff;
+    text-align: center;
+  }
+
+  .hk-home-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hk-home-title {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    row-gap: 0.12rem !important;
+
+    margin: 0 0 0.52rem !important;
+    padding: 0 !important;
+
+    line-height: 1.1 !important;
+  }
+
+  .hk-home-name-en,
+  .hk-home-name-ko {
+    display: block !important;
+
+    width: 100%;
+
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .hk-home-name-en {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 500;
+    letter-spacing: 0.25em;
+  }
+
+  .hk-home-name-ko {
+    margin-top: 0.08rem;
+
+    font-family:
+      "Noto Serif KR",
+      "Apple SD Gothic Neo",
+      serif;
+
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .hk-home-role {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-family:
+      "Inter",
+      "Noto Sans KR",
+      sans-serif;
+
+    font-size: 0.68rem;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.13em;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    opacity: 0.9;
+  }
+
+  .hk-home-role-separator {
+    display: inline-block;
+    margin-inline: 0.75em;
+    opacity: 0.65;
+  }
+
+  @media (max-width: 520px) {
+    .hk-home-hero {
+      padding:
+        0
+        1rem
+        max(8vh, env(safe-area-inset-bottom));
+    }
+
+    .hk-home-name-en {
+      font-size: clamp(1.25rem, 6.2vw, 1.65rem);
+      letter-spacing: 0.18em;
+    }
+
+    .hk-home-name-ko {
+      font-size: clamp(1.15rem, 5.6vw, 1.5rem);
+      letter-spacing: 0.08em;
+    }
+
+    .hk-home-role {
+      font-size: 0.56rem;
+      letter-spacing: 0.08em;
+    }
+
+    .hk-home-role-separator {
+      margin-inline: 0.6em;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .hk-home-role {
+      font-size: 0.52rem;
+      letter-spacing: 0.06em;
+    }
+  }
+</style>
