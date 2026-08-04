@@ -14,123 +14,38 @@ interface NavigationItem {
   ariaLabel?: string;
 }
 
-const {
-  lang = "en",
-  activePage = "",
-} = Astro.props;
+const { lang = "en", activePage = "" } = Astro.props;
 
 const navigation: Record<Language, NavigationItem[]> = {
   en: [
-    {
-      key: "home",
-      href: "/",
-      icon: true,
-      ariaLabel: "Home",
-    },
-    {
-      key: "bio",
-      label: "bio",
-      href: "/bio.html",
-    },
-    {
-      key: "news",
-      label: "news",
-      href: "/news.html",
-    },
-    {
-      key: "media",
-      label: "media",
-      href: "/media.html",
-    },
-    {
-      key: "press",
-      label: "press",
-      href: "/press.html",
-    },
-    {
-      key: "contact",
-      label: "contact",
-      href: "/contact.html",
-    },
+    { key: "home", href: "/", icon: true, ariaLabel: "Home" },
+    { key: "bio", label: "bio", href: "/bio.html" },
+    { key: "news", label: "news", href: "/news.html" },
+    { key: "media", label: "media", href: "/media.html" },
+    { key: "press", label: "press", href: "/press.html" },
+    { key: "contact", label: "contact", href: "/contact.html" },
   ],
-
   de: [
-    {
-      key: "home",
-      href: "/de/",
-      icon: true,
-      ariaLabel: "Startseite",
-    },
-    {
-      key: "bio",
-      label: "bio",
-      href: "/de/bio.html",
-    },
-    {
-      key: "news",
-      label: "news",
-      href: "/de/news.html",
-    },
-    {
-      key: "media",
-      label: "medien",
-      href: "/de/media.html",
-    },
-    {
-      key: "press",
-      label: "presse",
-      href: "/de/press.html",
-    },
-    {
-      key: "contact",
-      label: "kontakt",
-      href: "/de/contact.html",
-    },
+    { key: "home", href: "/de/", icon: true, ariaLabel: "Startseite" },
+    { key: "bio", label: "bio", href: "/de/bio.html" },
+    { key: "news", label: "news", href: "/de/news.html" },
+    { key: "media", label: "medien", href: "/de/media.html" },
+    { key: "press", label: "presse", href: "/de/press.html" },
+    { key: "contact", label: "kontakt", href: "/de/contact.html" },
   ],
-
   ko: [
-    {
-      key: "home",
-      href: "/ko/",
-      icon: true,
-      ariaLabel: "홈",
-    },
-    {
-      key: "bio",
-      label: "프로필",
-      href: "/ko/bio.html",
-    },
-    {
-      key: "news",
-      label: "소식",
-      href: "/ko/news.html",
-    },
-    {
-      key: "media",
-      label: "미디어",
-      href: "/ko/media.html",
-    },
-    {
-      key: "press",
-      label: "언론",
-      href: "/ko/press.html",
-    },
-    {
-      key: "contact",
-      label: "문의",
-      href: "/ko/contact.html",
-    },
+    { key: "home", href: "/ko/", icon: true, ariaLabel: "\ud648" },
+    { key: "bio", label: "\ud504\ub85c\ud544", href: "/ko/bio.html" },
+    { key: "news", label: "\uc18c\uc2dd", href: "/ko/news.html" },
+    { key: "media", label: "\ubbf8\ub514\uc5b4", href: "/ko/media.html" },
+    { key: "press", label: "\uc5b8\ub860", href: "/ko/press.html" },
+    { key: "contact", label: "\ubb38\uc758", href: "/ko/contact.html" },
   ],
 };
 
 const currentNavigation = navigation[lang];
-
-const currentPath = Astro.url.pathname;
-
-let pathWithoutLanguage = currentPath.replace(
-  /^\/(?:de|ko)(?=\/|$)/,
-  "",
-);
+const currentPath = Astro.url.pathname || "/";
+let pathWithoutLanguage = currentPath.replace(/^\/(?:de|ko)(?=\/|$)/, "");
 
 if (pathWithoutLanguage === "") {
   pathWithoutLanguage = "/";
@@ -149,75 +64,43 @@ const localizedPath = (targetLanguage: Language) => {
 };
 
 const languages = [
-  {
-    key: "en" as const,
-    label: "EN",
-    fullLabel: "English",
-    href: localizedPath("en"),
-  },
-  {
-    key: "de" as const,
-    label: "DE",
-    fullLabel: "Deutsch",
-    href: localizedPath("de"),
-  },
-  {
-    key: "ko" as const,
-    label: "한",
-    fullLabel: "한국어",
-    href: localizedPath("ko"),
-  },
+  { key: "en" as const, label: "EN", fullLabel: "English", href: localizedPath("en") },
+  { key: "de" as const, label: "DE", fullLabel: "Deutsch", href: localizedPath("de") },
+  { key: "ko" as const, label: "\ud55c", fullLabel: "\ud55c\uad6d\uc5b4", href: localizedPath("ko") },
 ];
 
-const alternateLanguages = languages.filter(
-  (language) => language.key !== lang,
-);
+const alternateLanguages = languages.filter((language) => language.key !== lang);
 ---
 
 <header class="hk-header">
   <a
     class="hk-logo"
     href={lang === "en" ? "/" : `/${lang}/`}
-    aria-label="Hyo-Jung Kang – Home"
+    aria-label="Hyo-Jung Kang - Home"
   >
     <span class="hk-logo-en">Hyo-Jung KANG</span>
-    <span class="hk-logo-ko" lang="ko">강효정</span>
+    <span class="hk-logo-ko" lang="ko">{"\uac15\ud6a8\uc815"}</span>
   </a>
 
   <div class="hk-desktop-navigation">
-    <nav
-      class="hk-main-navigation"
-      aria-label="Main navigation"
-    >
+    <nav class="hk-main-navigation" aria-label="Main navigation">
       {
         currentNavigation.map((item) =>
           item.icon ? (
             <a
               href={item.href}
-              class:list={[
-                "hk-home-link",
-                item.key === activePage && "is-active",
-              ]}
+              class:list={["hk-home-link", item.key === activePage && "is-active"]}
               aria-label={item.ariaLabel}
               title={item.ariaLabel}
-              aria-current={
-                item.key === activePage ? "page" : undefined
-              }
+              aria-current={item.key === activePage ? "page" : undefined}
             >
-              <img
-                src="/favicon-32x32.png"
-                alt=""
-                width="20"
-                height="20"
-              />
+              <img src="/favicon-32x32.png" alt="" width="20" height="20" />
             </a>
           ) : (
             <a
               href={item.href}
               class={item.key === activePage ? "is-active" : ""}
-              aria-current={
-                item.key === activePage ? "page" : undefined
-              }
+              aria-current={item.key === activePage ? "page" : undefined}
             >
               {item.label}
             </a>
@@ -226,10 +109,7 @@ const alternateLanguages = languages.filter(
       }
     </nav>
 
-    <nav
-      class="hk-language-navigation"
-      aria-label="Choose language"
-    >
+    <nav class="hk-language-navigation" aria-label="Choose language">
       {
         alternateLanguages.map((language) => (
           <a
@@ -258,39 +138,21 @@ const alternateLanguages = languages.filter(
     <span></span>
   </button>
 
-  <div
-    id="hk-mobile-menu"
-    class="hk-mobile-menu"
-    hidden
-  >
-    <nav
-      class="hk-mobile-main-navigation"
-      aria-label="Mobile navigation"
-    >
+  <div id="hk-mobile-menu" class="hk-mobile-menu" hidden>
+    <nav class="hk-mobile-main-navigation" aria-label="Mobile navigation">
       {
         currentNavigation.map((item) =>
           item.icon ? (
             <a
               href={item.href}
-              class:list={[
-                "hk-mobile-home-link",
-                item.key === activePage && "is-active",
-              ]}
+              class:list={["hk-mobile-home-link", item.key === activePage && "is-active"]}
               aria-label={item.ariaLabel}
               title={item.ariaLabel}
             >
-              <img
-                src="/favicon-32x32.png"
-                alt=""
-                width="28"
-                height="28"
-              />
+              <img src="/favicon-32x32.png" alt="" width="28" height="28" />
             </a>
           ) : (
-            <a
-              href={item.href}
-              class={item.key === activePage ? "is-active" : ""}
-            >
+            <a href={item.href} class={item.key === activePage ? "is-active" : ""}>
               {item.label}
             </a>
           )
@@ -298,10 +160,7 @@ const alternateLanguages = languages.filter(
       }
     </nav>
 
-    <nav
-      class="hk-mobile-language-navigation"
-      aria-label="Choose language"
-    >
+    <nav class="hk-mobile-language-navigation" aria-label="Choose language">
       {
         alternateLanguages.map((language) => (
           <a
@@ -323,10 +182,7 @@ const alternateLanguages = languages.filter(
   const menuButton = document.querySelector(".hk-menu-button");
   const mobileMenu = document.querySelector("#hk-mobile-menu");
 
-  if (
-    menuButton instanceof HTMLButtonElement &&
-    mobileMenu instanceof HTMLElement
-  ) {
+  if (menuButton instanceof HTMLButtonElement && mobileMenu instanceof HTMLElement) {
     const closeMenu = () => {
       menuButton.setAttribute("aria-expanded", "false");
       menuButton.setAttribute("aria-label", "Open menu");
@@ -342,20 +198,13 @@ const alternateLanguages = languages.filter(
     };
 
     menuButton.addEventListener("click", () => {
-      const isOpen =
-        menuButton.getAttribute("aria-expanded") === "true";
-
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      if (isOpen) closeMenu();
+      else openMenu();
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
+      if (event.key === "Escape") closeMenu();
     });
 
     mobileMenu.querySelectorAll("a").forEach((link) => {
@@ -367,47 +216,33 @@ const alternateLanguages = languages.filter(
 <style>
   .hk-header {
     box-sizing: border-box;
-
     position: fixed;
     inset: 0 0 auto;
     z-index: 1000;
-
     display: flex;
     align-items: flex-start;
-
     width: 100%;
     min-height: 62px;
-
     padding:
       max(0.8rem, env(safe-area-inset-top))
       max(1.8rem, env(safe-area-inset-right))
       0.7rem
       max(1.8rem, env(safe-area-inset-left));
-
     color: #fff;
-
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.88),
-        rgba(0, 0, 0, 0)
-      );
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0));
   }
 
   .hk-logo {
     position: static !important;
     top: auto !important;
-
     display: flex !important;
     flex: 0 0 auto;
     flex-direction: column !important;
     align-items: flex-start;
     justify-content: flex-start;
     align-self: flex-start;
-
     margin: 0 !important;
     padding: 0 !important;
-
     color: #fff;
     line-height: 1;
     text-decoration: none;
@@ -433,12 +268,7 @@ const alternateLanguages = languages.filter(
 
   .hk-logo-ko {
     margin-top: 0.28rem;
-
-    font-family:
-      "Noto Serif KR",
-      "Apple SD Gothic Neo",
-      serif;
-
+    font-family: "Noto Serif KR", "Apple SD Gothic Neo", serif;
     font-size: 0.66rem;
     font-weight: 400;
     line-height: 1;
@@ -451,11 +281,9 @@ const alternateLanguages = languages.filter(
     flex-wrap: nowrap;
     align-items: flex-start;
     align-self: flex-start;
-
     min-width: 0;
     margin-inline-start: auto;
     padding: 0;
-
     white-space: nowrap;
   }
 
@@ -464,10 +292,8 @@ const alternateLanguages = languages.filter(
     flex-wrap: nowrap;
     align-items: flex-start;
     gap: clamp(0.55rem, 0.9vw, 0.9rem);
-
     margin: 0;
     padding: 0;
-
     white-space: nowrap;
   }
 
@@ -476,25 +302,27 @@ const alternateLanguages = languages.filter(
     flex: 0 0 auto;
     align-items: flex-start;
     justify-content: center;
-
     margin: 0 !important;
     padding: 0 !important;
-
     color: #fff;
     opacity: 0.76;
-
-    font-family: "Playfair Display", serif;
+    font-family: "Playfair Display", "Noto Serif KR", serif;
     font-size: 0.73rem;
     font-weight: 500;
     line-height: 1;
     letter-spacing: 0.15em;
-
     text-decoration: none;
     border-bottom: 1px solid transparent;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
 
-    transition:
-      opacity 0.2s ease,
-      border-color 0.2s ease;
+  :global(html[lang="ko"]) .hk-main-navigation a {
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  :global(html[lang="ko"]) .hk-logo-ko {
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   }
 
   .hk-main-navigation a:hover,
@@ -507,67 +335,45 @@ const alternateLanguages = languages.filter(
   .hk-main-navigation .hk-home-link {
     position: relative;
     top: -4px;
-
     width: 24px;
     height: 20px;
-
     padding: 0 !important;
     border-bottom: 0;
   }
 
   .hk-home-link img {
     display: block;
-
     width: 20px;
     height: 20px;
-
     object-fit: contain;
   }
 
-  /*
-   * Sprachlinks werden optisch um einen Pixel nach unten gesetzt.
-   * Dadurch stehen DE und 한 exakt auf der Höhe von contact.
-   */
   .hk-language-navigation {
     position: relative;
     top: 1px;
-
     display: flex;
     flex: 0 0 auto;
     flex-wrap: nowrap;
     align-items: flex-start;
     gap: 0.5rem;
-
     margin: 0 0 0 0.78rem;
     padding: 0 0 0 0.72rem;
-
-    border-inline-start:
-      1px solid rgba(255, 255, 255, 0.28);
-
+    border-inline-start: 1px solid rgba(255, 255, 255, 0.28);
     white-space: nowrap;
   }
 
   .hk-language-navigation a {
     display: block;
-
     margin: 0 !important;
     padding: 0 !important;
-
     color: #fff;
     opacity: 0.75;
-
-    font-family:
-      "Inter",
-      "Noto Sans KR",
-      sans-serif;
-
+    font-family: "Inter", "Noto Sans KR", sans-serif;
     font-size: 0.62rem;
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0.05em;
-
     text-decoration: none;
-
     transition: opacity 0.2s ease;
   }
 
@@ -579,13 +385,10 @@ const alternateLanguages = languages.filter(
   .hk-menu-button {
     display: none;
     flex: 0 0 auto;
-
     width: 44px;
     height: 44px;
-
     margin-inline-start: auto;
     padding: 10px;
-
     border: 0;
     background: transparent;
     cursor: pointer;
@@ -593,16 +396,11 @@ const alternateLanguages = languages.filter(
 
   .hk-menu-button span {
     display: block;
-
     width: 22px;
     height: 1px;
     margin: 5px auto;
-
     background: #fff;
-
-    transition:
-      transform 0.2s ease,
-      opacity 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
   .hk-menu-button[aria-expanded="true"] span:nth-child(1) {
@@ -621,12 +419,10 @@ const alternateLanguages = languages.filter(
     position: fixed;
     inset: 0;
     z-index: 1;
-
     padding:
       max(6.3rem, env(safe-area-inset-top))
       1.5rem
       max(2rem, env(safe-area-inset-bottom));
-
     background: rgba(0, 0, 0, 0.97);
   }
 
@@ -645,19 +441,20 @@ const alternateLanguages = languages.filter(
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     padding: 0.65rem;
-
     color: #fff;
     opacity: 0.76;
-
-    font-family: "Playfair Display", serif;
+    font-family: "Playfair Display", "Noto Serif KR", serif;
     font-size: 1.05rem;
     line-height: 1.2;
     letter-spacing: 0.1em;
-
     text-decoration: none;
+  }
+
+  :global(html[lang="ko"]) .hk-mobile-main-navigation a {
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    letter-spacing: 0.04em;
   }
 
   .hk-mobile-main-navigation a:hover,
@@ -676,25 +473,17 @@ const alternateLanguages = languages.filter(
     flex-wrap: nowrap;
     justify-content: center;
     gap: 1.2rem;
-
     margin-top: 1.4rem;
     padding-top: 1.15rem;
-
     border-top: 1px solid rgba(255, 255, 255, 0.18);
     white-space: nowrap;
   }
 
   .hk-mobile-language-navigation a {
     padding: 0.65rem;
-
     color: #fff;
     opacity: 0.8;
-
-    font-family:
-      "Inter",
-      "Noto Sans KR",
-      sans-serif;
-
+    font-family: "Inter", "Noto Sans KR", sans-serif;
     font-size: 0.82rem;
     line-height: 1;
     text-decoration: none;
@@ -707,7 +496,6 @@ const alternateLanguages = languages.filter(
   @media (max-width: 900px) {
     .hk-header {
       align-items: center;
-
       padding:
         max(0.55rem, env(safe-area-inset-top))
         max(0.9rem, env(safe-area-inset-right))

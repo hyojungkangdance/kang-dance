@@ -10,6 +10,8 @@ interface Props {
   lang?: Language;
   activePage?: string;
   bodyClass?: string;
+  ogImage?: string;
+  pageSchema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -18,46 +20,111 @@ const {
   lang = "en",
   activePage = "",
   bodyClass = "",
+  ogImage = "/assets/images/og-image.png",
+  pageSchema,
 } = Astro.props;
+
+const siteUrl = new URL("https://kang.dance");
+const requestedPath = Astro.url.pathname || "/";
+const currentPath = requestedPath === "/de" ? "/de/" : requestedPath === "/ko" ? "/ko/" : requestedPath;
+const canonicalUrl = new URL(currentPath, siteUrl).toString();
+const absoluteOgImage = new URL(ogImage, siteUrl).toString();
+
+let pathWithoutLanguage = currentPath.replace(/^\/(?:de|ko)(?=\/|$)/, "");
+if (pathWithoutLanguage === "") pathWithoutLanguage = "/";
+
+const localizedPath = (targetLanguage: Language) => {
+  if (targetLanguage === "en") return pathWithoutLanguage;
+  if (pathWithoutLanguage === "/") return `/${targetLanguage}/`;
+  return `/${targetLanguage}${pathWithoutLanguage}`;
+};
+
+const englishUrl = new URL(localizedPath("en"), siteUrl).toString();
+const germanUrl = new URL(localizedPath("de"), siteUrl).toString();
+const koreanUrl = new URL(localizedPath("ko"), siteUrl).toString();
+
+const localeMap: Record<Language, string> = {
+  en: "en_US",
+  de: "de_AT",
+  ko: "ko_KR",
+};
+
+const alternateLocaleMap: Record<Language, string[]> = {
+  en: ["de_AT", "ko_KR"],
+  de: ["en_US", "ko_KR"],
+  ko: ["en_US", "de_AT"],
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://kang.dance/#hyo-jung-kang",
+  name: "Hyo-Jung Kang",
+  alternateName: ["\uac15\ud6a8\uc815", "Hyojung Kang", "Hyo Jung Kang", "Kang Hyo-jung"],
+  jobTitle: ["Principal Dancer", "Ballet Artist"],
+  url: "https://kang.dance/",
+  image: "https://kang.dance/assets/images/og-image.png",
+  sameAs: [
+    "https://www.instagram.com/hyojung_kang_/",
+    "https://www.semperoper.de/ensemble/personen/peid/hyo-jung-kang/7635.html",
+    "https://www.prixdelausanne.org/prize-winners/hyo-jung-kang/",
+  ],
+};
+
+const schemaGraph = pageSchema
+  ? Array.isArray(pageSchema)
+    ? [personSchema, ...pageSchema]
+    : [personSchema, pageSchema]
+  : [personSchema];
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="de" href={germanUrl} />
+    <link rel="alternate" hreflang="ko" href={koreanUrl} />
+    <link rel="alternate" hreflang="x-default" href={englishUrl} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
       rel="stylesheet"
     />
 
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicon-32x32.png"
-    />
-
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hyo-Jung Kang | 강효정" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:locale" content={localeMap[lang]} />
+    {alternateLocaleMap[lang].map((locale) => <meta property="og:locale:alternate" content={locale} />)}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@graph": schemaGraph })}></script>
   </head>
 
   <body class={bodyClass}>
     <Header lang={lang} activePage={activePage} />
-
     <slot />
   </body>
 </html>

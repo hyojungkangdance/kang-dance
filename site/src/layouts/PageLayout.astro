@@ -9,6 +9,8 @@ interface Props {
   activePage: string;
   pageClass: string;
   lang?: Language;
+  ogImage?: string;
+  pageSchema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -17,6 +19,8 @@ const {
   activePage,
   pageClass,
   lang = "en",
+  ogImage = "/assets/images/og-image.png",
+  pageSchema,
 } = Astro.props;
 ---
 
@@ -26,6 +30,8 @@ const {
   lang={lang}
   activePage={activePage}
   bodyClass={`page ${pageClass}`}
+  ogImage={ogImage}
+  pageSchema={pageSchema}
 >
   <main class="page-main">
     <div class="page-inner">

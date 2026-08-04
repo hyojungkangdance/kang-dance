@@ -1,0 +1,198 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import PressArchive from "../../components/PressArchive.astro";
+
+const pressItems = [
+  {
+    source: "Sejong Center / Seoul Metropolitan Ballet",
+    date: "15-16 Aug 2026",
+    title: "Death and the Maiden - Seoul Metropolitan Ballet at the National Theater of Korea",
+    href: "https://admin.sejongpac.or.kr/season/season2026/seasonProgram.do",
+  },
+  {
+    source: "Der Opernfreund",
+    date: "02 Jul 2026",
+    title: "Dresden Ballet: Onegin - John Cranko at Semperoper Dresden",
+    href: "https://deropernfreund.de/semperoper-dresden/dresden-ballett-onegin-john-cranko/",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "27 Jun 2026",
+    title: "Semperoper Ballett - Onegin by John Cranko",
+    href: "https://ballett-journal.de/semperoper-ballett-onegin-john-cranko/",
+  },
+  {
+    source: "Semperoper Dresden",
+    date: "2026",
+    title: "Press reviews for Onegin at Semperoper Ballett",
+    href: "https://www.semperoper.de/spielplan/stuecke/62703-onegin/pressestimmen.html",
+  },
+  {
+    source: "Semperoper Dresden",
+    date: "2026",
+    title: "Profound and emotionally moving - Hyo-Jung Kang and James Kirby Rogers on Onegin",
+    href: "https://www.semperoper.de/spielplan/stuecke/62703-onegin/interview.html",
+  },
+  {
+    source: "The Korea Herald",
+    date: "27 Oct 2025",
+    title: "Three generations of Korean ballet on one stage",
+    href: "https://www.koreaherald.com/article/10602230",
+  },
+  {
+    source: "Korea JoongAng Daily",
+    date: "23 Oct 2025",
+    title: "Seoul Metropolitan Ballet to bring curtain down in 2025 season with double bill",
+    href: "https://koreajoongangdaily.joins.com/news/2025-10-23/entertainment/musicPerformance/Seoul-Metropolitan-Ballet-to-bring-curtain-down-in-2025-season-with-double-bill/2427117",
+  },
+  {
+    source: "Maeil Business Newspaper (MK)",
+    date: "Nov 2025",
+    title: "A Tribute Ballet to a Composer Gone Too Soon - Hans van Manen x Young Soon Hue",
+    href: "https://www.mk.co.kr/en/culture/11455860",
+  },
+  {
+    source: "Der Opernfreund",
+    date: "29 Jun 2025",
+    title: "Vienna State Opera: Sleeping Beauty - Hyo-Jung Kang as Aurora",
+    href: "https://deropernfreund.de/wiener-staatsoper/wien-dornroeschen-tschaikowsky-schlaepfer-petipa/",
+  },
+  {
+    source: "tanz.at",
+    date: "2025",
+    title: "Kreationen - Vienna State Ballet",
+    href: "https://www.tanz.at/kritiken/kritiken-2025/3055-wiener-staatsballett-kreationen",
+  },
+  {
+    source: "Die Presse",
+    date: "20 Nov 2024",
+    title: "The Winter's Tale as ballet - Shakespeare without words",
+    href: "https://www.diepresse.com/19089775/the-winters-tale-als-ballett-ein-shakespeare-ganz-ohne-worte",
+  },
+  {
+    source: "Frankfurter Rundschau",
+    date: "2024",
+    title: "The Winter's Tale at Vienna State Ballet - A picture of jealousy",
+    href: "https://www.fr.de/kultur/theater/the-winter-tale-beim-wiener-staatsballett-ein-bild-von-eifersucht-93425183.html",
+  },
+  {
+    source: "BÜHNE Magazin",
+    date: "2024",
+    title: "The Winter's Tale - Shakespeare on pointe shoes",
+    href: "https://www.buehne-magazin.com/news/the-winters-tale-shakespeare-auf-spitzenschuhen",
+  },
+  {
+    source: "tanz.at",
+    date: "02 Jul 2024",
+    title: "Nurejew-Gala beim Wiener Staatsballett",
+    href: "https://www.tanz.at/kritiken/kritiken-2024/2923-nurejew-gala-beim-wiener-staatsballett",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "26 Jun 2024",
+    title: "Gala of virtuosity and vitality - Nurejew Gala of the Vienna State Ballet",
+    href: "https://ballett-journal.de/nurejew-gala-wiener-staatsballett-2024-live-stream/",
+  },
+  {
+    source: "tanz.at",
+    date: "2024",
+    title: "Kreationen - Vienna State Ballet",
+    href: "https://www.tanz.at/kritiken/kritiken-2024/2903-kreationen",
+  },
+  {
+    source: "tanzschrift.at",
+    date: "04 Oct 2023",
+    title: "Giselle - ballet with numerous debuts",
+    href: "https://www.tanzschrift.at/buehne/kritisch-gesehen/1626-giselle-ballett-mit-zahlreichen-debuts",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "06 Nov 2023",
+    title: "Grace incarnate - Star ballerina Hyo-Jung Kang",
+    href: "https://ballett-journal.de/hyo-jung-kang-starballerina-wiener-staatsballett/",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "28 Apr 2023",
+    title: "Like a sea of light - Goldberg Variations at Vienna State Ballet",
+    href: "https://ballett-journal.de/wiener-staatsballett-goldberg-variationen-heinz-spoerli/",
+  },
+  {
+    source: "BÜHNE Magazin",
+    date: "14 Mar 2023",
+    title: "Hyo-Jung Kang - First Soloist of the Vienna State Ballet",
+    href: "https://www.buehne-magazin.com/a/hyo-jung-kang-erste-solotaenzerin-des-wiener-staatsballetts",
+  },
+  {
+    source: "Online Merker",
+    date: "25 Oct 2022",
+    title: "Vienna State Opera: Sleeping Beauty - a fairy-tale without fairy-tale magic",
+    href: "https://onlinemerker.com/wien-staatsoper-dornroeschen-ein-zaubermaerchen-ganz-ohne-maerchenzauber-premiere/",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "25 Oct 2022",
+    title: "The Sleeping Beauty coup - Hyo-Jung Kang in the title role",
+    href: "https://ballett-journal.de/dornroeschen-wiener-staatsballett-hyo-jung-kang/",
+  },
+  {
+    source: "tanz.at",
+    date: "2022",
+    title: "In Seventh Heaven - Vienna State Ballet",
+    href: "https://www.tanz.at/kritiken/kritiken-2022/2706-im-siebten-himmel",
+  },
+  {
+    source: "Online Merker",
+    date: "27 Jul 2021",
+    title: "Stuttgart: NEW / WORKS - Farewell to Hyo-Jung Kang",
+    href: "https://onlinemerker.com/stuttgart-neue-werke-new-works-stuttgarter-ballett-abschied-von-hyo-jung-kang/",
+  },
+  {
+    source: "Stuttgarter Zeitung",
+    date: "21 Jul 2021",
+    title: "Ballerina Hyo-Jung Kang says farewell to Stuttgart Ballet",
+    href: "https://www.stuttgarter-zeitung.de/gallery.stuttgarter-ballett-taenzerin-hyo-jung-kang-verabschiedet-sich.861cd589-483c-45b6-9957-d9a2d02ebb9b.html",
+  },
+  {
+    source: "The Korea Times",
+    date: "11 Jan 2013",
+    title: "Kang Hyo-jung, future of Stuttgart Ballet",
+    href: "https://www.koreatimes.co.kr/www/art/2013/01/690_128680.html",
+  },
+  {
+    source: "Semperoper Ballett Dresden",
+    date: "Official profile",
+    title: "Hyo-Jung Kang - Principal Dancer at Semperoper Ballett Dresden",
+    href: "https://www.semperoper.de/ensemble/personen/peid/hyo-jung-kang/7635.html",
+  },
+  {
+    source: "Vienna State Opera",
+    date: "Official archive",
+    title: "Kang Hyo-Jung - Vienna State Ballet performance archive",
+    href: "https://archiv.wiener-staatsoper.at/search/person/13666",
+  },
+  {
+    source: "Prix de Lausanne",
+    date: "Official profile",
+    title: "Hyo-Jung Kang - 2002 Scholarship Prize winner",
+    href: "https://www.prixdelausanne.org/prize-winners/hyo-jung-kang/",
+  },
+] as const;
+---
+
+<PageLayout
+  title="Presse - Hyo-Jung Kang | Kritiken, Interviews und Artikel"
+  description="Ausgewählte Kritiken, Interviews, Aufführungsankündigungen und offizielle Profile über Hyo-Jung Kang."
+  lang="de"
+  activePage="press"
+  pageClass="press-page"
+  ogImage="/assets/images/press_bg.jpg"
+>
+  <h1>presse</h1>
+  <p class="press-introduction">Ausgewählte Kritiken, Porträts, Interviews und offizielle Aufführungsankündigungen aus internationalen Zeitungen, Magazinen, Ballettcompagnien und Opernhäusern.</p>
+  <PressArchive items={pressItems} ariaLabel="Presseberichte über Hyo-Jung Kang" />
+</PageLayout>
+
+<style>
+  .press-introduction { max-width: 48rem; margin-bottom: 1.8rem; }
+</style>

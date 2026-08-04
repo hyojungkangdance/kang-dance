@@ -1,0 +1,28 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import VideoGrid from "../components/VideoGrid.astro";
+
+const videos = [
+  { title: "Vienna State Ballet - Sleeping Beauty (rehearsal impressions)", caption: "Studio rehearsal at Vienna State Ballet.", youtubeId: "UqJhrVKimPY" },
+  { title: "Global Success Era - Embracing the World: Hyo-Jung Kang", caption: "A television portrait of Hyo-Jung Kang and her international ballet career.", youtubeId: "UIcDlZ2Vuf0" },
+  { title: "Vienna State Ballet - Sleeping Beauty", caption: "Stage performance at Vienna State Opera.", youtubeId: "1v2cnQFDSQI" },
+  { title: "Seoul Metropolitan Ballet - Class With Me", caption: "Company class with Seoul Metropolitan Ballet.", youtubeId: "UNQZoszXPJQ" },
+] as const;
+---
+
+<PageLayout
+  title="Media - Hyo-Jung Kang | Performances and Videos"
+  description="Selected performance, rehearsal and ballet class videos featuring Principal Dancer Hyo-Jung Kang."
+  lang="en"
+  activePage="media"
+  pageClass="media-page"
+  ogImage="/assets/images/media_bg.jpg"
+>
+  <h1>media</h1>
+  <p class="media-introduction">A selection of video recordings featuring Hyo-Jung Kang in performance, rehearsal and ballet class.</p>
+  <VideoGrid videos={videos} />
+</PageLayout>
+
+<style>
+  .media-introduction { max-width: 48rem; margin-bottom: 1.8rem; line-height: 1.8; }
+</style>
