@@ -1,0 +1,250 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  color: #fff;
+  background: #000;
+  line-height: 1.5;
+}
+
+body.home {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.page {
+  position: relative;
+  min-height: 100vh;
+  background-color: #000;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+body.bio-page {
+  background-image: url("/assets/images/bio_bg.jpg");
+}
+
+body.news-page,
+body.press-page {
+  background-image: url("/assets/images/press_bg.jpg");
+}
+
+body.media-page {
+  background-image: url("/assets/images/media_bg.jpg");
+}
+
+body.contact-page {
+  background-image: url("/assets/images/contact_bg.jpg");
+}
+
+.page-main {
+  min-height: 100vh;
+  padding: 5.5rem 1.5rem 3rem;
+}
+
+.page-inner {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.page-inner h1 {
+  margin-bottom: 1.8rem;
+  font-family: "Playfair Display", "Noto Serif KR", serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.page-inner h2 {
+  margin: 1.5rem 0 0.8rem;
+  font-family: "Playfair Display", "Noto Serif KR", serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.page-inner p {
+  margin-bottom: 1rem;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.page-inner em {
+  font-style: italic;
+}
+
+.bio-name-kr {
+  font-family: "Noto Serif KR", "Apple SD Gothic Neo", serif;
+  letter-spacing: 0.08em;
+}
+
+.bio-section {
+  margin-bottom: 1.5rem;
+}
+
+.bio-list,
+.press-list,
+.contact-list {
+  list-style: none;
+}
+
+.bio-list,
+.contact-list {
+  font-size: 0.95rem;
+}
+
+.bio-list li,
+.contact-list li {
+  margin-bottom: 0.4rem;
+}
+
+.media-section {
+  margin-bottom: 2rem;
+}
+
+.media-videos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.video-embed {
+  max-width: 720px;
+}
+
+.video-inner {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.video-inner iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-caption {
+  margin-top: 0.4rem;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.press-list {
+  font-size: 0.95rem;
+}
+
+.press-list li {
+  margin-bottom: 1.2rem;
+}
+
+.press-meta {
+  color: #bbb;
+  font-size: 0.85rem;
+}
+
+.press-list a {
+  border-bottom: 1px solid #555;
+  color: #fff;
+  text-decoration: none;
+}
+
+.press-list a:hover {
+  border-color: #fff;
+}
+
+html[lang="ko"] body {
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+html[lang="ko"] .page-inner h1,
+html[lang="ko"] .page-inner h2,
+html[lang="ko"] .bio-name-kr {
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+@media (max-width: 900px) {
+  body.page {
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-main {
+    padding: 5rem 1rem 2.5rem;
+  }
+
+  .page-inner h1 {
+    margin-bottom: 1.35rem;
+    font-size: 1.35rem;
+  }
+
+  .page-inner h2 {
+    font-size: 1.05rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

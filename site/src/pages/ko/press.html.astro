@@ -1,0 +1,374 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+
+const pressItems = [
+  {
+    source: "세종문화회관 · 서울시발레단",
+    date: "2026년 8월 15–16일",
+    title:
+      "더블 빌 〈죽음과 소녀〉 – 객원수석 강효정 특별출연",
+    href:
+      "https://www.sejongpac.or.kr/portal/performance/performance/performTicket.do?menuNo=200320&performIdx=36783",
+  },
+  {
+    source: "조선일보",
+    date: "2026년 7월 28일",
+    title:
+      "올여름 서울, K발레 스타들이 쏟아진다",
+    href:
+      "https://www.chosun.com/culture-life/performance-arts/2026/07/28/YFSE6YNFXZEJTKDFUV4EN4XLC4/",
+  },
+  {
+    source: "Der Opernfreund",
+    date: "2026년 7월 2일",
+    title:
+      "드레스덴 발레 〈오네긴〉 – 젬퍼오퍼의 존 크랑코 작품",
+    href:
+      "https://deropernfreund.de/semperoper-dresden/dresden-ballett-onegin-johbn-cranko/",
+  },
+  {
+    source: "Sächsische Zeitung",
+    date: "2026년 7월 1일",
+    title:
+      "드레스덴 젬퍼오퍼 관객을 사로잡은 발레 고전 〈오네긴〉",
+    href:
+      "https://www.saechsische.de/lokales/dresden/dresden-ballett-klassiker-onegin-begeistert-semperoper-publikum-SRNEUNZOORBSLNGY3RRMDVKJAM.html",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "2026년 6월 27일",
+    title: "젬퍼오퍼 발레단 – 존 크랑코의 〈오네긴〉",
+    href:
+      "https://ballett-journal.de/semperoper-ballett-onegin-john-cranko/",
+  },
+  {
+    source: "드레스덴 젬퍼오퍼",
+    date: "2026년",
+    title: "〈오네긴〉 언론 리뷰 모음",
+    href:
+      "https://www.semperoper.de/spielplan/stuecke/62703-onegin/pressestimmen.html",
+  },
+  {
+    source: "드레스덴 젬퍼오퍼",
+    date: "2026년",
+    title:
+      "깊이 있고 감동적인 작품 – 강효정과 제임스 커비 로저스의 〈오네긴〉 인터뷰",
+    href:
+      "https://www.semperoper.de/spielplan/stuecke/62703-onegin/interview.html",
+  },
+  {
+    source: "The Korea Herald",
+    date: "2025년 10월 27일",
+    title: "한 무대에 오른 한국 발레의 세 세대",
+    href: "https://www.koreaherald.com/article/10602230",
+  },
+  {
+    source: "Korea JoongAng Daily",
+    date: "2025년 10월 23일",
+    title:
+      "서울시발레단, 더블 빌로 2025 시즌 마무리",
+    href:
+      "https://koreajoongangdaily.joins.com/news/2025-10-23/entertainment/musicPerformance/Seoul-Metropolitan-Ballet-to-bring-curtain-down-in-2025-season-with-double-bill/2427117",
+  },
+  {
+    source: "매일경제",
+    date: "2025년 11월",
+    title:
+      "너무 일찍 떠난 작곡가에게 바치는 발레 – 한스 판 마넨 × 허용순",
+    href: "https://www.mk.co.kr/en/culture/11455860",
+  },
+  {
+    source: "Der Opernfreund",
+    date: "2025년 6월 29일",
+    title:
+      "빈 국립오페라극장 〈잠자는 숲속의 미녀〉 – 오로라 역의 강효정",
+    href:
+      "https://deropernfreund.de/wiener-staatsoper/wien-dornroeschen-tschaikowsky-schlaepfer-petipa/",
+  },
+  {
+    source: "tanz.at",
+    date: "2025년",
+    title: "빈 국립발레단 〈Kreationen〉",
+    href:
+      "https://www.tanz.at/kritiken/kritiken-2025/3055-wiener-staatsballett-kreationen",
+  },
+  {
+    source: "Die Presse",
+    date: "2024년 11월 20일",
+    title:
+      "발레로 만나는 〈겨울 이야기〉 – 말 없이 전하는 셰익스피어",
+    href:
+      "https://www.diepresse.com/19089775/the-winters-tale-als-ballett-ein-shakespeare-ganz-ohne-worte",
+  },
+  {
+    source: "Frankfurter Rundschau",
+    date: "2024년",
+    title:
+      "빈 국립발레단의 〈겨울 이야기〉 – 질투의 초상",
+    href:
+      "https://www.fr.de/kultur/theater/the-winter-tale-beim-wiener-staatsballett-ein-bild-von-eifersucht-93425183.html",
+  },
+  {
+    source: "BÜHNE Magazin",
+    date: "2024년",
+    title: "〈겨울 이야기〉 – 토슈즈로 만나는 셰익스피어",
+    href:
+      "https://www.buehne-magazin.com/news/the-winters-tale-shakespeare-auf-spitzenschuhen",
+  },
+  {
+    source: "tanz.at",
+    date: "2024년 7월 2일",
+    title: "빈 국립발레단 누레예프 갈라",
+    href:
+      "https://www.tanz.at/kritiken/kritiken-2024/2923-nurejew-gala-beim-wiener-staatsballett",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "2024년 6월 26일",
+    title:
+      "기교와 생명력의 갈라 – 빈 국립발레단 누레예프 갈라",
+    href:
+      "https://ballett-journal.de/nurejew-gala-wiener-staatsballett-2024-live-stream/",
+  },
+  {
+    source: "tanz.at",
+    date: "2024년",
+    title: "빈 국립발레단 〈Kreationen〉",
+    href:
+      "https://www.tanz.at/kritiken/kritiken-2024/2903-kreationen",
+  },
+  {
+    source: "tanzschrift.at",
+    date: "2023년 10월 4일",
+    title: "다수의 데뷔와 함께한 발레 〈지젤〉",
+    href:
+      "https://www.tanzschrift.at/buehne/kritisch-gesehen/1626-giselle-ballett-mit-zahlreichen-debuts",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "2023년 11월 6일",
+    title: "우아함의 화신 – 스타 발레리나 강효정",
+    href:
+      "https://ballett-journal.de/hyo-jung-kang-starballerina-wiener-staatsballett/",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "2023년 4월 28일",
+    title:
+      "빛의 바다처럼 – 빈 국립발레단 〈골드베르크 변주곡〉",
+    href:
+      "https://ballett-journal.de/wiener-staatsballett-goldberg-variationen-heinz-spoerli/",
+  },
+  {
+    source: "BÜHNE Magazin",
+    date: "2023년 3월 14일",
+    title: "빈 국립발레단 수석무용수 강효정",
+    href:
+      "https://www.buehne-magazin.com/a/hyo-jung-kang-erste-solotaenzerin-des-wiener-staatsballetts",
+  },
+  {
+    source: "Online Merker",
+    date: "2022년 10월 25일",
+    title:
+      "빈 국립오페라극장 〈잠자는 숲속의 미녀〉 리뷰",
+    href:
+      "https://onlinemerker.com/wien-staatsoper-dornroeschen-ein-zaubermaerchen-ganz-ohne-maerchenzauber-premiere/",
+  },
+  {
+    source: "ballett-journal.de",
+    date: "2022년 10월 25일",
+    title:
+      "강효정이 타이틀 롤을 맡은 〈잠자는 숲속의 미녀〉",
+    href:
+      "https://ballett-journal.de/dornroeschen-wiener-staatsballett-hyo-jung-kang/",
+  },
+  {
+    source: "tanz.at",
+    date: "2022년",
+    title: "빈 국립발레단 〈일곱 번째 천국에서〉",
+    href:
+      "https://www.tanz.at/kritiken/kritiken-2022/2706-im-siebten-himmel",
+  },
+  {
+    source: "Online Merker",
+    date: "2021년 7월 27일",
+    title:
+      "슈투트가르트 〈NEW / WORKS〉 – 강효정과의 작별",
+    href:
+      "https://onlinemerker.com/stuttgart-neue-werke-new-works-stuttgarter-ballett-abschied-von-hyo-jung-kang/",
+  },
+  {
+    source: "Stuttgarter Zeitung",
+    date: "2021년 7월 21일",
+    title: "슈투트가르트 발레단을 떠나는 발레리나 강효정",
+    href:
+      "https://www.stuttgarter-zeitung.de/gallery.stuttgarter-ballett-taenzerin-hyo-jung-kang-verabschiedet-sich.861cd589-483c-45b6-9957-d9a2d02ebb9b.html",
+  },
+  {
+    source: "The Korea Times",
+    date: "2013년 1월 11일",
+    title: "슈투트가르트 발레단의 미래, 강효정",
+    href:
+      "https://www.koreatimes.co.kr/www/art/2013/01/690_128680.html",
+  },
+  {
+    source: "드레스덴 젬퍼오퍼 발레단",
+    date: "공식 프로필",
+    title: "강효정 – 드레스덴 젬퍼오퍼 발레단 수석무용수",
+    href:
+      "https://www.semperoper.de/ensemble/personen/peid/hyo-jung-kang/7635.html",
+  },
+  {
+    source: "빈 국립오페라극장",
+    date: "공식 아카이브",
+    title: "강효정 – 빈 국립발레단 공연 아카이브",
+    href:
+      "https://archiv.wiener-staatsoper.at/search/person/13666",
+  },
+  {
+    source: "프리 드 로잔",
+    date: "공식 프로필",
+    title: "강효정 – 2002년 프리 드 로잔 장학생상 수상자",
+    href:
+      "https://www.prixdelausanne.org/prize-winners/hyo-jung-kang/",
+  },
+] as const;
+---
+
+<PageLayout
+  title="강효정 언론 보도 | 인터뷰·공연 리뷰·기사"
+  description="강효정 발레리나의 국내외 인터뷰, 공연 리뷰, 기사, 공식 프로필과 서울 및 유럽 공연 보도를 모았습니다."
+  lang="ko"
+  activePage="press"
+  pageClass="press-page"
+  ogImage="/assets/images/press_bg.jpg"
+>
+  <h1>언론 보도</h1>
+
+  <p class="press-introduction">
+    강효정의 국내외 인터뷰, 공연 리뷰, 공식 프로필 및 공연 관련
+    기사를 소개합니다.
+  </p>
+
+  <section class="press-archive" aria-label="강효정 언론 보도 목록">
+    <ul class="press-list">
+      {
+        pressItems.map((item) => (
+          <li class="press-item">
+            <div class="press-meta">
+              <span class="press-source">{item.source}</span>
+              <span class="press-date">{item.date}</span>
+            </div>
+
+            <a
+              class="press-link"
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</PageLayout>
+
+<style>
+  .press-introduction {
+    max-width: 48rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.8;
+    word-break: keep-all;
+  }
+
+  .press-archive {
+    width: 100%;
+    max-width: 56rem;
+    padding-bottom: 4rem;
+  }
+
+  .press-list {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .press-item {
+    margin: 0;
+    padding: 0 0 1.05rem;
+    border-bottom: 0;
+  }
+
+  .press-item + .press-item {
+    margin-top: 1.05rem;
+  }
+
+  .press-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .press-source {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .press-date {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.72rem;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .press-link {
+    color: #fff;
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-decoration-line: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    word-break: keep-all;
+  }
+
+  .press-link:hover,
+  .press-link:focus-visible {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration-color: rgba(255, 255, 255, 0.9);
+  }
+
+  @media (max-width: 700px) {
+    .press-archive {
+      padding-bottom: 3rem;
+    }
+
+    .press-item {
+      padding-bottom: 0.9rem;
+    }
+
+    .press-item + .press-item {
+      margin-top: 0.9rem;
+    }
+
+    .press-source {
+      font-size: 0.76rem;
+    }
+
+    .press-date {
+      font-size: 0.68rem;
+    }
+
+    .press-link {
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+  }
+</style>

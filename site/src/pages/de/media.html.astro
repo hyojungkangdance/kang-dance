@@ -1,0 +1,28 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import VideoGrid from "../../components/VideoGrid.astro";
+
+const videos = [
+  { title: "Wiener Staatsballett - Dornröschen (Probeneindrücke)", caption: "Studio-Probe beim Wiener Staatsballett.", youtubeId: "UqJhrVKimPY" },
+  { title: "Global Success Era - Die Welt umarmen: Hyo-Jung Kang", caption: "Ein TV-Porträt über Hyo-Jung Kang und ihre internationale Ballettkarriere.", youtubeId: "UIcDlZ2Vuf0" },
+  { title: "Wiener Staatsballett - Dornröschen", caption: "Bühnenaufführung an der Wiener Staatsoper.", youtubeId: "1v2cnQFDSQI" },
+  { title: "Seoul Metropolitan Ballet - Class With Me", caption: "Compagnie-Training mit dem Seoul Metropolitan Ballet.", youtubeId: "UNQZoszXPJQ" },
+] as const;
+---
+
+<PageLayout
+  title="Medien - Hyo-Jung Kang | Aufführungen und Videos"
+  description="Ausgewählte Aufführungs-, Proben- und Trainingsvideos mit Hyo-Jung Kang."
+  lang="de"
+  activePage="media"
+  pageClass="media-page"
+  ogImage="/assets/images/media_bg.jpg"
+>
+  <h1>medien</h1>
+  <p class="media-introduction">Eine Auswahl an Auff&uuml;hrungs-, Proben- und Trainingsvideos mit Hyo-Jung Kang.</p>
+  <VideoGrid videos={videos} />
+</PageLayout>
+
+<style>
+  .media-introduction { max-width: 48rem; margin-bottom: 1.8rem; line-height: 1.8; }
+</style>

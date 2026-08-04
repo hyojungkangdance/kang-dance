@@ -1,0 +1,137 @@
+---
+interface PressItem {
+  source: string;
+  date: string;
+  title: string;
+  href: string;
+}
+
+interface Props {
+  items: readonly PressItem[];
+  ariaLabel: string;
+}
+
+const { items, ariaLabel } = Astro.props;
+---
+
+<section class="press-archive" aria-label={ariaLabel}>
+  <ul class="press-archive-list">
+    {
+      items.map((item) => (
+        <li class="press-item">
+          <div class="press-item-meta">
+            <span class="press-item-source">{item.source}</span>
+            <span class="press-item-date">{item.date}</span>
+          </div>
+          <a class="press-item-link" href={item.href} target="_blank" rel="noopener noreferrer">
+            {item.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .press-archive {
+    width: 100%;
+    max-width: 54rem;
+    padding-bottom: 4rem;
+  }
+
+  .press-archive-list {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .press-item {
+    margin: 0;
+    padding: 0 0 1.05rem;
+    border-bottom: 0;
+  }
+
+  .press-item + .press-item {
+    margin-top: 1.05rem;
+  }
+
+  .press-item-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    margin: 0 0 0.3rem;
+    padding: 0;
+  }
+
+  .press-item-source {
+    color: rgba(255, 255, 255, 0.78);
+    font-family: "Inter", "Noto Sans KR", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .press-item-date {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: "Inter", "Noto Sans KR", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 300;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  .press-item-link {
+    display: inline;
+    color: #fff;
+    font-family: "Inter", "Noto Sans KR", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration-line: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .press-item-link:hover,
+  .press-item-link:focus-visible {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration-color: rgba(255, 255, 255, 0.9);
+  }
+
+  @media (max-width: 700px) {
+    .press-archive {
+      padding-bottom: 3rem;
+    }
+
+    .press-item {
+      padding-bottom: 0.9rem;
+    }
+
+    .press-item + .press-item {
+      margin-top: 0.9rem;
+    }
+
+    .press-item-meta {
+      gap: 0.18rem 0.55rem;
+      margin-bottom: 0.24rem;
+    }
+
+    .press-item-source {
+      font-size: 0.76rem;
+    }
+
+    .press-item-date {
+      font-size: 0.68rem;
+    }
+
+    .press-item-link {
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+  }
+</style>

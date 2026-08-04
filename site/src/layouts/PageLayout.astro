@@ -1,0 +1,41 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+type Language = "en" | "de" | "ko";
+
+interface Props {
+  title: string;
+  description: string;
+  activePage: string;
+  pageClass: string;
+  lang?: Language;
+  ogImage?: string;
+  pageSchema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  activePage,
+  pageClass,
+  lang = "en",
+  ogImage = "/assets/images/og-image.png",
+  pageSchema,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  activePage={activePage}
+  bodyClass={`page ${pageClass}`}
+  ogImage={ogImage}
+  pageSchema={pageSchema}
+>
+  <main class="page-main">
+    <div class="page-inner">
+      <slot />
+    </div>
+  </main>
+</BaseLayout>

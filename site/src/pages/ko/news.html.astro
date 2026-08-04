@@ -1,0 +1,227 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+
+const eventSchema = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: "서울시발레단 더블 빌 〈죽음과 소녀〉",
+  startDate: "2026-08-15T14:00:00+09:00",
+  endDate: "2026-08-16T16:00:00+09:00",
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  location: {
+    "@type": "Place",
+    name: "국립극장 해오름극장",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "장충단로 59",
+      addressLocality: "중구",
+      addressRegion: "서울특별시",
+      addressCountry: "KR",
+    },
+  },
+  performer: {
+    "@type": "Person",
+    "@id": "https://kang.dance/#hyo-jung-kang",
+    name: "강효정",
+  },
+  organizer: {
+    "@type": "Organization",
+    name: "서울시발레단",
+    url: "https://www.sejongpac.or.kr/portal/sjartgroups/artMember/list.do?bcode=BALLET&menuNo=200580",
+  },
+  offers: {
+    "@type": "Offer",
+    url: "https://www.sejongpac.or.kr/portal/performance/performance/performTicket.do?menuNo=200320&performIdx=36783",
+    availability: "https://schema.org/InStock",
+    validFrom: "2026-01-06T14:00:00+09:00",
+  },
+};
+---
+
+<PageLayout
+  title="강효정 최신 소식 | 서울 공연·티켓·공연 안내"
+  description="강효정 발레리나의 최신 공연 소식, 서울 공연 일정, 티켓 정보, 인터뷰와 공식 발표를 확인할 수 있습니다."
+  lang="ko"
+  activePage="news"
+  pageClass="press-page"
+  ogImage="/assets/images/press_bg.jpg"
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(eventSchema)}
+  ></script>
+
+  <h1>소식</h1>
+
+  <p class="news-introduction">
+    강효정의 최신 공연, 티켓, 인터뷰 및 공식 발표를 안내합니다.
+  </p>
+
+  <article class="news-card news-card-featured">
+    <div class="news-meta">
+      <span>2026년 8월 15–16일</span>
+      <span>서울 · 국립극장 해오름극장</span>
+    </div>
+
+    <h2>서울시발레단 더블 빌 〈죽음과 소녀〉 특별출연</h2>
+
+    <p>
+      강효정은 서울시발레단의 더블 빌 〈죽음과 소녀〉에서 객원수석으로
+      특별출연합니다. 크리스티안 슈푹의 <em>Das siebte Blau</em>와
+      알렉산더 에크만의 <em>Cacti</em>가 한 무대에서 공연되며,
+      강효정은 드레스덴 젬퍼오퍼 발레단 수석무용수로 소개됩니다.
+    </p>
+
+    <dl class="event-details">
+      <div>
+        <dt>공연</dt>
+        <dd>서울시발레단 더블 빌 〈죽음과 소녀〉</dd>
+      </div>
+
+      <div>
+        <dt>기간</dt>
+        <dd>2026년 8월 15일 토요일 – 8월 16일 일요일</dd>
+      </div>
+
+      <div>
+        <dt>장소</dt>
+        <dd>국립극장 해오름극장</dd>
+      </div>
+
+      <div>
+        <dt>출연</dt>
+        <dd>객원수석 강효정 외 서울시발레단 무용수</dd>
+      </div>
+    </dl>
+
+    <a
+      class="news-button"
+      href="https://www.sejongpac.or.kr/portal/performance/performance/performTicket.do?menuNo=200320&performIdx=36783"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      공연 정보 및 예매
+    </a>
+  </article>
+
+  <article class="news-card">
+    <div class="news-meta">
+      <span>2026년</span>
+      <span>드레스덴 젬퍼오퍼</span>
+    </div>
+
+    <h2>존 크랑코 〈오네긴〉 타티아나</h2>
+
+    <p>
+      강효정은 드레스덴 젬퍼오퍼 발레단의 존 크랑코 〈오네긴〉에서
+      타티아나 역을 맡았습니다. 공식 인터뷰에서 작품과 배역에 대한
+      오랜 인연, 서사 발레의 정서적 깊이와 타티아나의 내면에 대해
+      이야기했습니다.
+    </p>
+
+    <a
+      class="news-text-link"
+      href="https://www.semperoper.de/spielplan/stuecke/62703-onegin/interview.html"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      젬퍼오퍼 공식 인터뷰 보기
+    </a>
+  </article>
+</PageLayout>
+
+<style>
+  .news-introduction {
+    max-width: 48rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.8;
+  }
+
+  .news-card {
+    max-width: 52rem;
+    margin-top: 1.4rem;
+    padding: 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+  }
+
+  .news-card-featured {
+    border-color: rgba(255, 255, 255, 0.34);
+  }
+
+  .news-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.85rem;
+    margin-bottom: 0.65rem;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.76rem;
+  }
+
+  .news-card h2 {
+    margin: 0 0 0.85rem;
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  .news-card p {
+    line-height: 1.85;
+    word-break: keep-all;
+  }
+
+  .event-details {
+    margin: 1.2rem 0;
+    padding: 0;
+  }
+
+  .event-details div {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .event-details dt {
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .event-details dd {
+    margin: 0;
+  }
+
+  .news-button,
+  .news-text-link {
+    display: inline-block;
+    margin-top: 0.7rem;
+    color: #fff;
+    text-underline-offset: 0.22em;
+  }
+
+  .news-button {
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+  }
+
+  .news-button:hover,
+  .news-button:focus-visible {
+    background: #fff;
+    color: #000;
+  }
+
+  @media (max-width: 600px) {
+    .news-card {
+      padding: 1.05rem;
+    }
+
+    .event-details div {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>
