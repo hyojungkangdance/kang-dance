@@ -20,7 +20,7 @@ const {
   lang = "en",
   activePage = "",
   bodyClass = "",
-  ogImage = "/assets/images/og-image.png",
+  ogImage = "/assets/images/hyo-jung-kang-social-preview.png",
   pageSchema,
 } = Astro.props;
 
@@ -63,7 +63,7 @@ const personSchema = {
   alternateName: ["\uac15\ud6a8\uc815", "Hyojung Kang", "Hyo Jung Kang", "Kang Hyo-jung"],
   jobTitle: ["Principal Dancer", "Ballet Artist"],
   url: "https://kang.dance/",
-  image: "https://kang.dance/assets/images/og-image.png",
+  image: "https://kang.dance/assets/images/hyo-jung-kang-social-preview.png",
   sameAs: [
     "https://www.instagram.com/hyojung_kang_/",
     "https://www.semperoper.de/ensemble/personen/peid/hyo-jung-kang/7635.html",
@@ -112,6 +112,11 @@ const schemaGraph = pageSchema
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:secure_url" content={absoluteOgImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="838" />
+    <meta property="og:image:height" content="440" />
+    <meta property="og:image:alt" content="Hyo-Jung Kang – Ballet Artist and Principal Dancer" />
     <meta property="og:locale" content={localeMap[lang]} />
     {alternateLocaleMap[lang].map((locale) => <meta property="og:locale:alternate" content={locale} />)}
 
@@ -119,6 +124,7 @@ const schemaGraph = pageSchema
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content="Hyo-Jung Kang – Ballet Artist and Principal Dancer" />
 
     <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@graph": schemaGraph })}></script>
   </head>
